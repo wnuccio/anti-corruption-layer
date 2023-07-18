@@ -1,4 +1,4 @@
-package ch4stringasenum;
+package ch4stringtoenum;
 
 public class Book {
     String title;

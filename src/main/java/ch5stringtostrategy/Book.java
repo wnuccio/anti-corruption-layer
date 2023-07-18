@@ -1,4 +1,4 @@
-package ch5stringasstrategy;
+package ch5stringtostrategy;
 
 public class Book {
     String title;

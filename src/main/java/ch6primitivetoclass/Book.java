@@ -1,4 +1,4 @@
-package ch6primitiveasclass;
+package ch6primitivetoclass;
 
 import java.util.Optional;
 
