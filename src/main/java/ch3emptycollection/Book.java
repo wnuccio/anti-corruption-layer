@@ -1,6 +1,7 @@
 package ch3emptycollection;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Book {
@@ -8,14 +9,10 @@ public class Book {
     String author;
     List<Reference> references;
 
-    public Book(String title,
-                String author,
-                List<Reference> references) {
-
-        this.title = title;
-        this.author = author;
-        this.references = references == null ?
-                new ArrayList<>() : references;
+    public List<Reference> references() {
+        return references == null ?
+                new ArrayList<>() :
+                Collections.unmodifiableList(references);
     }
 }
 
