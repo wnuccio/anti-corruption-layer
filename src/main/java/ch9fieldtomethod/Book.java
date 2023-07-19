@@ -6,13 +6,13 @@ public class Book {
     String title;
     List<Page> pages;
 
-    public boolean isDamaged() {
+    public boolean hasAnyDamagedPage() {
         return pages
                 .stream()
                 .anyMatch(Page::damaged);
     }
 
-    public boolean isTotallyDamaged() {
+    public boolean hasAllDamagedPages() {
         return pages
                 .stream()
                 .allMatch(Page::damaged);
