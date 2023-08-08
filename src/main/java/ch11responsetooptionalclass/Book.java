@@ -1,4 +1,4 @@
-package ch11responsetoresult;
+package ch11responsetooptionalclass;
 
 import java.util.Date;
 import java.util.Optional;
