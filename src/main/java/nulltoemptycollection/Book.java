@@ -8,9 +8,20 @@ public class Book {
     String title;
     List<String> stores;
 
+    private Book(String title, List<String> stores) {
+        this.title = title;
+        this.stores = stores;
+    }
+
+    public static Book of(String title, List<String> stores) {
+        if (stores == null) {
+            stores = new ArrayList<>();
+        }
+
+        return new Book(title, stores);
+    }
+
     public List<String> stores() {
-        return stores == null ?
-                new ArrayList<>() :
-                Collections.unmodifiableList(stores);
+        return Collections.unmodifiableList(stores);
     }
 }

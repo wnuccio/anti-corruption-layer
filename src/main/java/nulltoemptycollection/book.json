@@ -1,8 +1,10 @@
 {
-  "title": "I promessi sposi",
-  "stores": [
-    "www.some-url.com",
-    "www.another-url.com",
-    "www.yet-another-url.com"
-  ]
+  "book": {
+    "title": "I promessi sposi",
+    "stores": [
+      "www.some-url.com",
+      "www.another-url.com",
+      "www.yet-another-url.com"
+    ]
+  }
 }
