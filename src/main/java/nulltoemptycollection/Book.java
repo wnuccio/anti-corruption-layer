@@ -6,17 +6,11 @@ import java.util.List;
 
 public class Book {
     String title;
-    String author;
-    List<Reference> references;
+    List<String> stores;
 
-    public List<Reference> references() {
-        return references == null ?
+    public List<String> stores() {
+        return stores == null ?
                 new ArrayList<>() :
-                Collections.unmodifiableList(references);
+                Collections.unmodifiableList(stores);
     }
-}
-
-class Reference {
-    String type;
-    String name;
 }

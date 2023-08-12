@@ -1,14 +1,8 @@
 {
   "title": "I promessi sposi",
-  "author": "Alessandro Manzoni",
-  "references": [
-    {
-      "type": "link",
-      "name": "official website"
-    },
-    {
-      "type": "book",
-      "name": "Manzoni biography"
-    }
+  "stores": [
+    "www.some-url.com",
+    "www.another-url.com",
+    "www.yet-another-url.com"
   ]
 }
