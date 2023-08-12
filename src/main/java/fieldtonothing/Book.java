@@ -1,4 +1,4 @@
-package ch1removeunnecessaryfield;
+package fieldtonothing;
 
 public class Book {
     String title;

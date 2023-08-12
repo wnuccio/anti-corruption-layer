@@ -1,4 +1,4 @@
-package ch3nulltoemptycollection;
+package nulltoemptycollection;
 
 import java.util.ArrayList;
 import java.util.Collections;
