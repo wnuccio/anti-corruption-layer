@@ -1,0 +1,16 @@
+{
+  "title": "The Perfect Software Engineer",
+  "author": "M. Fowler",
+  "references": [
+    {
+      "author": "Elon Musk",
+      "title": "Cars, Rockets and Social Networks - common abstractions",
+      "keywords": "modelling, software "
+    },
+    {
+      "author": "J. Bezos",
+      "name": "Becoming reach selling Cloud services",
+      "keywords": "cloud, e-commerce "
+    }
+  ]
+}
