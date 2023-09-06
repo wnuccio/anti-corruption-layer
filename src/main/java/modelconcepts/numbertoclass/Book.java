@@ -1,4 +1,4 @@
-package numbertoclass;
+package modelconcepts.numbertoclass;
 
 public class Book {
     String title;

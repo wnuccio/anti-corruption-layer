@@ -1,4 +1,4 @@
-package identifiertoreference;
+package modelrelationships.identifiertoreference;
 
 import java.util.List;
 import java.util.stream.Collectors;

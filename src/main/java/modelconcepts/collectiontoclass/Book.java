@@ -1,4 +1,4 @@
-package collectiontoclass;
+package modelconcepts.collectiontoclass;
 
 import java.util.List;
 import java.util.stream.Collectors;

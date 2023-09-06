@@ -1,4 +1,4 @@
-package ch9fieldtomethod;
+package modelrelationships.fieldtomethod;
 
 import java.util.List;
 

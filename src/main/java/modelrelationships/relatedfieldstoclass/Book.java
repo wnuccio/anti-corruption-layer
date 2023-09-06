@@ -1,8 +1,15 @@
-package ch10relatedfieldstoclass;
+package modelrelationships.relatedfieldstoclass;
 
-import java.time.ZonedDateTime;
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.TimeZone;
 
-public class Book {
+
+class DeliveredBooks {
+    List<Book> books;
+}
+
+class Book {
     String title;
     Price price;
     Time deliveryTime;
@@ -21,11 +28,7 @@ class Price {
 }
 
 class Time {
-    ZonedDateTime time;
-
-    boolean isAfter(Time other) {
-        // ... logic to compare different timezone
-        return true;
-    }
+    TimeZone timeZone;
+    LocalDateTime time;
 }
 
