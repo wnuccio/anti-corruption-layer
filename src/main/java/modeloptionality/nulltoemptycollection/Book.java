@@ -1,4 +1,4 @@
-package nulltoemptycollection;
+package modeloptionality.nulltoemptycollection;
 
 import java.util.ArrayList;
 import java.util.Collections;

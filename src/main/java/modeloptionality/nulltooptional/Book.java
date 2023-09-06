@@ -1,11 +1,9 @@
-package nulltooptional;
+package modeloptionality.nulltooptional;
 
 import java.util.Optional;
 
 public class Book {
     String title;
-    String author;
-
     String publisher;
 
     public Optional<String> publisher() {
