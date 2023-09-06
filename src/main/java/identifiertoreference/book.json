@@ -1,0 +1,30 @@
+{
+  "delivered_books": {
+    "person_list": [
+      {
+        "id": 1,
+        "name": "Walter Nuccio",
+        "address": "Pozzuoli, V. D.Alighieri"
+      },
+      {
+        "id": 2,
+        "name": "Chiara Rossi",
+        "address": "Torino, V. Rinascimento"
+      }
+    ],
+    "books": [
+      {
+        "title": "I promessi sposi",
+        "person": 1
+      },
+      {
+        "title": "I promessi sposi",
+        "person": 2
+      },
+      {
+        "title": "Don Chischiotte",
+        "person": 1
+      }
+    ]
+  }
+}
