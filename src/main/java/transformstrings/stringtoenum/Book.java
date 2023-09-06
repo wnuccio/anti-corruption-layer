@@ -1,4 +1,4 @@
-package ch5stringtostrategy;
+package transformstrings.stringtoenum;
 
 public class Book {
     String title;
@@ -8,7 +8,6 @@ public class Book {
     enum Genre {
         COMEDY, THRILLER, FANTASY
     }
-
 }
 
 

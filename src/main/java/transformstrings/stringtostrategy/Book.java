@@ -1,4 +1,4 @@
-package ch4stringtoenum;
+package transformstrings.stringtostrategy;
 
 public class Book {
     String title;
@@ -24,14 +24,6 @@ public class Book {
             return 0.20;
         }
     }
-
-    class Unknown implements Genre {
-        @Override
-        public double discountPercentage() {
-            return 0.50; // a default value
-        }
-    }
-
 }
 
 
