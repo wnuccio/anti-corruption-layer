@@ -1,4 +1,4 @@
-package transformresponse.ch12errortoexception;
+package transformresponse.errortoexception;
 
 class BookAvailability {
     Book book;
@@ -7,11 +7,11 @@ class BookAvailability {
 
 class Book {
     String title;
-    String publisher;
     String author;
 }
 
-class BookAvailabilityException extends RuntimeException {
+class BookAvailabilityException
+        extends RuntimeException {
     String message;
 }
 
