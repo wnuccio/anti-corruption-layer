@@ -4,11 +4,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 class DeliveredBooks {
-    List<DeliveredBook> deliveredBooks;
+    List<DeliveredBook> books;
 
     List<DeliveredBook> findAllBooksDeliveredTo(String personName) {
-        return deliveredBooks.stream()
-                .filter(deliveredBook -> deliveredBook.isDeliveredTo(personName))
+        return books.stream()
+                .filter(book -> book.isDeliveredTo(personName))
                 .collect(Collectors.toList());
     }
 }
@@ -24,13 +24,13 @@ class DeliveredBook {
 
 class Person {
     String name;
-
     String address;
+
     public boolean hasName(String personName) {
         return this.name.equals(personName);
     }
-
 }
+
 class Book {
     String title;
 }

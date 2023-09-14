@@ -4,27 +4,27 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Book {
-    private String title;
-    private String author;
-    private Bibliography bibliography;
+    String title;
+    String author;
+    Bibliography bibliography;
 }
 
 class Bibliography {
-    private List<Reference> references;
+    List<Reference> references;
 
     public List<Reference> findReferences(String keyword) {
-        return references.stream()
-                .filter(ref -> ref.contains(keyword))
+            return references.stream()
+                .filter(reference -> reference.hasKeyword(keyword))
                 .collect(Collectors.toList());
     }
 }
 
 class Reference {
-    private String author;
-    private String title;
-    private String keywords;
+    String title;
+    String author;
+    String keywords;
 
-    public boolean contains(String keyword) {
+    public boolean hasKeyword(String keyword) {
         return keywords.contains(keyword);
     }
 }

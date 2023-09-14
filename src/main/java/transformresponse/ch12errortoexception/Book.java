@@ -1,4 +1,4 @@
-package ch12errortoexception;
+package transformresponse.ch12errortoexception;
 
 class BookAvailability {
     Book book;

@@ -15,7 +15,6 @@ class ISBN {
 
 class SomeService {
     void someFunction(ISBN aBook, String aPerson) {
-
     }
 }
 

@@ -1,16 +1,18 @@
 {
-  "title": "The Perfect Software Engineer",
-  "author": "M. Fowler",
-  "references": [
-    {
-      "author": "Elon Musk",
-      "title": "Cars, Rockets and Social Networks - common abstractions",
-      "keywords": "modelling, software "
-    },
-    {
-      "author": "J. Bezos",
-      "name": "Becoming reach selling Cloud services",
-      "keywords": "cloud, e-commerce "
-    }
-  ]
+  "book": {
+    "title": "The Perfect Software Engineer",
+    "author": "M. Fowler",
+    "references": [
+      {
+        "title": "Cars, Rockets, Social Networks - common abstractions",
+        "author": "Elon Musk",
+        "keywords": "modelling, software "
+      },
+      {
+        "title": "Getting rich selling Cloud services",
+        "author": "J. Bezos",
+        "keywords": "cloud, e-commerce "
+      }
+    ]
+  }
 }

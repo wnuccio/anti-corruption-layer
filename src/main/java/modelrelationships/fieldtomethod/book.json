@@ -1,14 +1,16 @@
 {
-  "title": "I promessi sposi",
-  "damaged": true,
-  "pages": [
-    {
-      "num": "1",
-      "damaged": true
-    },
-    {
-      "num": "2",
-      "damaged": false
-    }
-  ]
+  "book": {
+    "title": "I promessi sposi",
+    "damaged": true,
+    "pages": [
+      {
+        "num": "1",
+        "damaged": true
+      },
+      {
+        "num": "2",
+        "damaged": false
+      }
+    ]
+  }
 }

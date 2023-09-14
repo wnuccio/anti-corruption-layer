@@ -1,4 +1,4 @@
-package modelrelationships.responsestooneclass;
+package transformresponse.responsestooneclass;
 
 import java.util.Date;
 
