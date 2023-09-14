@@ -1,4 +1,4 @@
-package transformresponse.ch13responsetohierarchy;
+package transformresponse.responsetohierarchy;
 
 import java.util.Date;
 
@@ -9,7 +9,6 @@ class BookAvailability {
 
 class Book {
     String title;
-    String publisher;
     String author;
 }
 

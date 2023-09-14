@@ -1,0 +1,9 @@
+{
+  "book_availability": {
+    "title": "I promessi sposi",
+    "author": "A. Manzoni",
+    "available": null,
+    "on_date": null,
+    "error": "italian books not supported"
+  }
+}
