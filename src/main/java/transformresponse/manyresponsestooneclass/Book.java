@@ -1,4 +1,4 @@
-package transformresponse.responsestooneclass;
+package transformresponse.manyresponsestooneclass;
 
 import java.util.Date;
 
