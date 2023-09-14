@@ -1,20 +1,23 @@
-package transformresponse.ch11responsetooptionalclass;
+package transformresponse.responsetooptionalclass;
 
 import java.util.Date;
 import java.util.Optional;
 
 class BookAvailability {
     Book book;
-    Optional<Availability> availability;
+    Availability availability;
+
+    public Optional<Availability> availability() {
+        return Optional.ofNullable(availability);
+    }
 
     boolean isAvailable() {
-        return availability.isPresent();
+        return availability().isPresent();
     }
 }
 
 class Book {
     String title;
-    String publisher;
     String author;
 }
 
