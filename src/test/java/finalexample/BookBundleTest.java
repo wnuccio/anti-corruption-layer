@@ -19,10 +19,14 @@ class BookBundleTest {
 
     @Test
     void retrieveTheEditionWithOneBookAndOnePublisher() {
-        Publisher publisher = new Publisher("Addison-Wesley");
-        BookBundle bundle = new BookBundle(
-                new PublishedBook("Design Patterns", "Gof", "978-0201633610", publisher, 1994, 30.00)
-        );
+        PublishedBook book = PublishedBook.builder()
+                .title("Design Patterns")
+                .isbn("978-0201633610")
+                .publisher(new Publisher("Addison-Wesley"))
+                .year(1994)
+                .price(30.00)
+                .build();
+        BookBundle bundle = new BookBundle(book);
 
         Edition edition = bundle.editionOf("978-0201633610");
 
@@ -31,13 +35,23 @@ class BookBundleTest {
 
     @Test
     void retrieveTheEditionWithOneBookAndTwoPublishers() {
-        Publisher publisher1 = new Publisher("O'Reilly");
-        Publisher publisher2 = new Publisher("Addison-Wesley");
+        PublishedBook book1 = PublishedBook.builder()
+                .title("Refactoring")
+                .isbn("978-1234567876")
+                .publisher(new Publisher("O'Reilly"))
+                .year(2002)
+                .price(40.00)
+                .build();
 
-        BookBundle bundle = new BookBundle(
-                new PublishedBook("Refactoring", "Fowler", "978-1234567876", publisher1, 2002, 40.00),
-                new PublishedBook("Design Patterns", "Gof", "978-0201633610", publisher2, 2000, 30.00)
-        );
+        PublishedBook book2 = PublishedBook.builder()
+                .title("Design Patterns")
+                .isbn("978-0201633610")
+                .publisher(new Publisher("Addison-Wesley"))
+                .year(2000)
+                .price(30.00)
+                .build();
+
+        BookBundle bundle = new BookBundle(book1, book2);
 
         Edition edition = bundle.editionOf("978-0201633610");
 
