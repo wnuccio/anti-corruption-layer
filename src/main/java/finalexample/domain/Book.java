@@ -17,8 +17,8 @@ public class Book {
         this.price = price;
     }
 
-    public static PublishedBookBuilder builder() {
-        return new PublishedBookBuilder();
+    public static BookBuilder builder() {
+        return new BookBuilder();
     }
 
     public String title() {

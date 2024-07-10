@@ -1,33 +1,33 @@
 package finalexample.domain;
 
-public class PublishedBookBuilder {
+public class BookBuilder {
     private String title;
     private String isbn;
     private String publisher;
     private int year;
     private double price;
 
-    public PublishedBookBuilder title(String title) {
+    public BookBuilder title(String title) {
         this.title = title;
         return this;
     }
 
-    public PublishedBookBuilder isbn(String isbn) {
+    public BookBuilder isbn(String isbn) {
         this.isbn = isbn;
         return this;
     }
 
-    public PublishedBookBuilder publisher(String publisherName) {
+    public BookBuilder publisher(String publisherName) {
         this.publisher = publisherName;
         return this;
     }
 
-    public PublishedBookBuilder year(int year) {
+    public BookBuilder year(int year) {
         this.year = year;
         return this;
     }
 
-    public PublishedBookBuilder price(double price) {
+    public BookBuilder price(double price) {
         this.price = price;
         return this;
     }
