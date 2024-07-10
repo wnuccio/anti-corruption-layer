@@ -1,6 +1,7 @@
 package finalexample.mapping;
 
 import finalexample.domain.Isbn;
+import finalexample.domain.Price;
 import finalexample.dtos.PublishedBookDto;
 
 public class PublishedBookInfoDtoMapper {
@@ -18,7 +19,7 @@ public class PublishedBookInfoDtoMapper {
         return publishedBookDto.getYear();
     }
 
-    public double toPrice() {
-        return publishedBookDto.getPrice();
+    public Price toPrice() {
+        return Price.ofEuros(publishedBookDto.getPrice());
     }
 }

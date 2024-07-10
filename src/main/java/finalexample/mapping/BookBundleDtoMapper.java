@@ -3,6 +3,7 @@ package finalexample.mapping;
 import finalexample.domain.Book;
 import finalexample.domain.BookBundle;
 import finalexample.domain.Isbn;
+import finalexample.domain.Price;
 import finalexample.domain.Publisher;
 import finalexample.domain.ValidationException;
 import finalexample.dtos.BookBundleDto;
@@ -37,7 +38,7 @@ public class BookBundleDtoMapper {
 
             PublishedBookInfoDtoMapper publishedBookInfoDtoMapper = publisherMapper.publisherBookInfoMapperOf(isbn);
             int year = publishedBookInfoDtoMapper.toYear();
-            double price = publishedBookInfoDtoMapper.toPrice();
+            Price price = publishedBookInfoDtoMapper.toPrice();
 
             Book book = new Book(title, isbn, publisher, year, price);
             books.add(book);

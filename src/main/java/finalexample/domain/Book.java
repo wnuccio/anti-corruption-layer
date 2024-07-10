@@ -7,9 +7,9 @@ public class Book {
     private final Isbn isbn;
     private final Publisher publisher;
     private final int year;
-    private final double price;
+    private final Price price;
 
-    public Book(String title, Isbn isbn, Publisher publisher, int year, double price) {
+    public Book(String title, Isbn isbn, Publisher publisher, int year, Price price) {
         this.title = title;
         this.isbn = isbn;
         this.publisher = publisher;
@@ -33,7 +33,7 @@ public class Book {
         return year;
     }
 
-    public double price() {
+    public Price price() {
         return price;
     }
 
@@ -46,7 +46,7 @@ public class Book {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Book that = (Book) o;
-        return year == that.year && Double.compare(price, that.price) == 0 && Objects.equals(title, that.title) && Objects.equals(isbn, that.isbn) && Objects.equals(publisher, that.publisher);
+        return year == that.year && Objects.equals(price, that.price) && Objects.equals(title, that.title) && Objects.equals(isbn, that.isbn) && Objects.equals(publisher, that.publisher);
     }
 
     @Override

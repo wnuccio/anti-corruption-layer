@@ -24,7 +24,7 @@ public class BookBundle {
                 book.title(),
                 book.publisherName(),
                 book.year(),
-                book.price());
+                book.price().euros());
     }
 
     @Override
