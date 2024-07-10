@@ -11,6 +11,8 @@ public class Price {
     }
 
     public static Price ofEuros(double euros) {
+        if (euros < 0) throw new ValidationException("Price cannot be negative: " + euros);
+
         return new Price(euros);
     }
 

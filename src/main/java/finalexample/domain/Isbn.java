@@ -10,9 +10,9 @@ public class Isbn {
     }
 
     public static Isbn validate(String isbn) {
-        if (isbn == null || !isbn.matches("^[0-9]{3}-[0-9]{10}$")) {
+        if (isbn == null || !isbn.matches("^[0-9]{3}-[0-9]{10}$"))
             throw new ValidationException("ISBN is not valid: " + isbn);
-        }
+
         return new Isbn(isbn);
     }
 

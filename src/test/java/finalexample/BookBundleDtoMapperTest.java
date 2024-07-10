@@ -74,4 +74,16 @@ class BookBundleDtoMapperTest {
 
         assertThrows(ValidationException.class, () -> mapper.toBundle());
     }
+
+    @Test
+    void bundle_with_invalid_price_is_rejected() {
+        BookInfoDto book = new BookInfoDto("Refactoring", "Fowler", "978-1234567876");
+        PublishedBookDto pubBook = new PublishedBookDto("Refactoring", "978-1234567876", -40.00,2002);
+        PublisherDto publisher = new PublisherDto("O'Reilly", "USA", List.of(pubBook));
+        BookBundleDto bookBundleDto = new BookBundleDto(List.of(book), List.of(publisher));
+
+        BookBundleDtoMapper mapper = new BookBundleDtoMapper(bookBundleDto);
+
+        assertThrows(ValidationException.class, () -> mapper.toBundle());
+    }
 }
