@@ -4,6 +4,7 @@ import finalexample.dtos.BookBundleDto;
 import finalexample.model.BookBundle;
 import finalexample.model.PublishedBook;
 import finalexample.model.Publisher;
+import finalexample.model.ValidationException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,6 +49,6 @@ public class BookBundleDtoMapper {
         return publishers.stream()
                 .filter(publisherDtoMapper -> publisherDtoMapper.hasIsbn(isbn))
                 .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException("Publisher not found"));
+                .orElseThrow(() -> new ValidationException("No Publisher found for ISBN:" + isbn));
     }
 }

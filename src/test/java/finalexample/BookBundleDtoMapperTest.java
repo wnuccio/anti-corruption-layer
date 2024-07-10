@@ -62,4 +62,16 @@ class BookBundleDtoMapperTest {
 
         assertThrows(ValidationException.class, () -> mapper.toBundle());
     }
+
+    @Test
+    void book_with_isbn_not_referred_by_any_publisher_is_rejected() {
+        BookInfoDto book = new BookInfoDto("Refactoring", "Fowler", "978-1234567876");
+        PublishedBookInfoDto pubBook = new PublishedBookInfoDto("Refactoring", "978-1111111111", 40.00,2002);
+        PublisherDto publisher = new PublisherDto("O'Reilly", "USA", List.of(pubBook));
+        BookBundleDto bookBundleDto = new BookBundleDto(List.of(book), List.of(publisher));
+
+        BookBundleDtoMapper mapper = new BookBundleDtoMapper(bookBundleDto);
+
+        assertThrows(ValidationException.class, () -> mapper.toBundle());
+    }
 }
