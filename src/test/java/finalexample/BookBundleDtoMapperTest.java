@@ -52,7 +52,7 @@ class BookBundleDtoMapperTest {
     }
 
     @Test
-    void book_with_invalid_isbn_is_rejected() {
+    void bundle_with_invalid_isbn_is_rejected() {
         BookInfoDto book = new BookInfoDto("Refactoring", "Fowler", "xxxx");
         PublishedBookDto pubBook = new PublishedBookDto("Refactoring", "xxxx", 40.00,2002);
         PublisherDto publisher = new PublisherDto("O'Reilly", "USA", List.of(pubBook));
@@ -64,7 +64,7 @@ class BookBundleDtoMapperTest {
     }
 
     @Test
-    void book_with_isbn_not_referred_by_any_publisher_is_rejected() {
+    void bundle_with_isbn_not_referred_by_any_publisher_is_rejected() {
         BookInfoDto book = new BookInfoDto("Refactoring", "Fowler", "978-1234567876");
         PublishedBookDto pubBook = new PublishedBookDto("Refactoring", "978-1111111111", 40.00,2002);
         PublisherDto publisher = new PublisherDto("O'Reilly", "USA", List.of(pubBook));
