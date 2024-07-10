@@ -6,12 +6,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class BookBundleTest {
 
-    // Retrieve the edition of a book with one book in the catalog and one publisher
-    // Retrieve the edition of a book with one book and two publishers
-    // Retrieve the edition of a book with two books and two publisher
-    // Book not present: exception
+    /**
+     * Retrieve the edition of a book with one book and two publishers
+     * Retrieve the edition of a book with two books and two publisher
+     * Book not present: exception
+     * DONE
+     * Retrieve the edition of a book with one book in the catalog and one publisher
+     */
+
     @Test
-    void test() {
+    void retrieveTheEditionWithOneBookAndOnePublisher() {
         Publisher publisher = new Publisher("Addison-Wesley");
         BookBundle bundle = new BookBundle(
                 new PublishedBook("Design Patterns", "Gof", "978-0201633610", publisher, 1994, 30.00)
