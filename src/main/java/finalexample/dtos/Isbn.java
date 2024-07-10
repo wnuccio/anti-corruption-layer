@@ -1,5 +1,7 @@
 package finalexample.dtos;
 
+import finalexample.model.ValidationException;
+
 public class Isbn {
     private final String isbn;
 
@@ -8,7 +10,9 @@ public class Isbn {
     }
 
     public static Isbn validate(String isbn) {
-        // some validation logic here
+        if (isbn == null || !isbn.matches("^[0-9]{3}-[0-9]{10}$")) {
+            throw new ValidationException("ISBN is not valid: " + isbn);
+        }
         return new Isbn(isbn);
     }
 
