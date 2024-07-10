@@ -1,5 +1,9 @@
-package finalexample.model;
+package finalexample;
 
+import finalexample.model.BookBundle;
+import finalexample.model.Edition;
+import finalexample.model.PublishedBook;
+import finalexample.model.Publisher;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
