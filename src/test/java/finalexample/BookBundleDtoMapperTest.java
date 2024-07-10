@@ -7,7 +7,6 @@ import finalexample.dtos.PublisherDto;
 import finalexample.mapping.BookBundleDtoMapper;
 import finalexample.model.BookBundle;
 import finalexample.model.PublishedBook;
-import finalexample.model.Publisher;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -36,14 +35,14 @@ class BookBundleDtoMapperTest {
                 PublishedBook.builder()
                         .title("Refactoring")
                         .isbn("978-1234567876")
-                        .publisher(new Publisher("O'Reilly"))
+                        .publisher("O'Reilly")
                         .year(2002)
                         .price(40.00)
                         .build(),
                 PublishedBook.builder()
                         .title("Design Patterns")
                         .isbn("978-0201633610")
-                        .publisher(new Publisher("Addison-Wesley"))
+                        .publisher("Addison-Wesley")
                         .year(2000)
                         .price(30.00)
                         .build());

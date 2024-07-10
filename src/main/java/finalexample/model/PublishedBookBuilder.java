@@ -17,8 +17,8 @@ public class PublishedBookBuilder {
         return this;
     }
 
-    public PublishedBookBuilder publisher(Publisher publisher) {
-        this.publisher = publisher;
+    public PublishedBookBuilder publisher(String publisherName) {
+        this.publisher = new Publisher(publisherName);
         return this;
     }
 
