@@ -32,7 +32,7 @@ public class PublishedBookBuilder {
         return this;
     }
 
-    public PublishedBook build() {
-        return new PublishedBook(title, isbn, publisher, year, price);
+    public Book build() {
+        return new Book(title, isbn, publisher, year, price);
     }
 }

@@ -1,12 +1,12 @@
 package finalexample.dtos;
 
-public class PublishedBookInfoDto {
+public class PublishedBookDto {
     String title;
     String isbn;
     double price;
     int year;
 
-    public PublishedBookInfoDto(String title, String isbn, double price, int year) {
+    public PublishedBookDto(String title, String isbn, double price, int year) {
         this.title = title;
         this.isbn = isbn;
         this.year = year;

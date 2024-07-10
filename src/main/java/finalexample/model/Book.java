@@ -2,14 +2,14 @@ package finalexample.model;
 
 import java.util.Objects;
 
-public class PublishedBook {
+public class Book {
     private final String title;
     private final String isbn;
     private final Publisher publisher;
     private final int year;
     private final double price;
 
-    public PublishedBook(String title, String isbn, Publisher publisher, int year, double price) {
+    public Book(String title, String isbn, Publisher publisher, int year, double price) {
         this.title = title;
         this.isbn = isbn;
         this.publisher = publisher;
@@ -45,7 +45,7 @@ public class PublishedBook {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        PublishedBook that = (PublishedBook) o;
+        Book that = (Book) o;
         return year == that.year && Double.compare(price, that.price) == 0 && Objects.equals(title, that.title) && Objects.equals(isbn, that.isbn) && Objects.equals(publisher, that.publisher);
     }
 

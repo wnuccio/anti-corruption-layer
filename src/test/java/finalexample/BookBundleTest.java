@@ -1,8 +1,8 @@
 package finalexample;
 
+import finalexample.model.Book;
 import finalexample.model.BookBundle;
 import finalexample.model.Edition;
-import finalexample.model.PublishedBook;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -18,7 +18,7 @@ class BookBundleTest {
 
     @Test
     void retrieveTheEditionWithOneBookAndOnePublisher() {
-        PublishedBook book = PublishedBook.builder()
+        Book book = Book.builder()
                 .title("Design Patterns")
                 .isbn("978-0201633610")
                 .publisher("Addison-Wesley")
@@ -34,7 +34,7 @@ class BookBundleTest {
 
     @Test
     void retrieveTheEditionWithTwoBooksAndTwoPublishers() {
-        PublishedBook book1 = PublishedBook.builder()
+        Book book1 = Book.builder()
                 .title("Refactoring")
                 .isbn("978-1234567876")
                 .publisher("O'Reilly")
@@ -42,7 +42,7 @@ class BookBundleTest {
                 .price(40.00)
                 .build();
 
-        PublishedBook book2 = PublishedBook.builder()
+        Book book2 = Book.builder()
                 .title("Design Patterns")
                 .isbn("978-0201633610")
                 .publisher("Addison-Wesley")

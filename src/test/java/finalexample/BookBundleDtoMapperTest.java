@@ -2,11 +2,11 @@ package finalexample;
 
 import finalexample.dtos.BookBundleDto;
 import finalexample.dtos.BookInfoDto;
-import finalexample.dtos.PublishedBookInfoDto;
+import finalexample.dtos.PublishedBookDto;
 import finalexample.dtos.PublisherDto;
 import finalexample.mapping.BookBundleDtoMapper;
+import finalexample.model.Book;
 import finalexample.model.BookBundle;
-import finalexample.model.PublishedBook;
 import finalexample.model.ValidationException;
 import org.junit.jupiter.api.Test;
 
@@ -22,8 +22,8 @@ class BookBundleDtoMapperTest {
         BookInfoDto book1 = new BookInfoDto("Refactoring", "Fowler", "978-1234567876");
         BookInfoDto book2 = new BookInfoDto("Design Patterns", "Gof", "978-0201633610");
 
-        PublishedBookInfoDto pubBook1 = new PublishedBookInfoDto("Refactoring", "978-1234567876", 40.00,2002);
-        PublishedBookInfoDto pubBook2 = new PublishedBookInfoDto("Design Pattern", "978-0201633610", 30.00,2000);
+        PublishedBookDto pubBook1 = new PublishedBookDto("Refactoring", "978-1234567876", 40.00,2002);
+        PublishedBookDto pubBook2 = new PublishedBookDto("Design Pattern", "978-0201633610", 30.00,2000);
 
         PublisherDto publisher1 = new PublisherDto("O'Reilly", "USA", List.of(pubBook1));
         PublisherDto publisher2 = new PublisherDto("Addison-Wesley", "USA", List.of(pubBook2));
@@ -33,14 +33,14 @@ class BookBundleDtoMapperTest {
         BookBundle actualBundle = new BookBundleDtoMapper(bookBundleDto).toBundle();
 
         BookBundle expectedBundle = new BookBundle(
-                PublishedBook.builder()
+                Book.builder()
                         .title("Refactoring")
                         .isbn("978-1234567876")
                         .publisher("O'Reilly")
                         .year(2002)
                         .price(40.00)
                         .build(),
-                PublishedBook.builder()
+                Book.builder()
                         .title("Design Patterns")
                         .isbn("978-0201633610")
                         .publisher("Addison-Wesley")
@@ -54,7 +54,7 @@ class BookBundleDtoMapperTest {
     @Test
     void book_with_invalid_isbn_is_rejected() {
         BookInfoDto book = new BookInfoDto("Refactoring", "Fowler", "xxxx");
-        PublishedBookInfoDto pubBook = new PublishedBookInfoDto("Refactoring", "xxxx", 40.00,2002);
+        PublishedBookDto pubBook = new PublishedBookDto("Refactoring", "xxxx", 40.00,2002);
         PublisherDto publisher = new PublisherDto("O'Reilly", "USA", List.of(pubBook));
         BookBundleDto bookBundleDto = new BookBundleDto(List.of(book), List.of(publisher));
 
@@ -66,7 +66,7 @@ class BookBundleDtoMapperTest {
     @Test
     void book_with_isbn_not_referred_by_any_publisher_is_rejected() {
         BookInfoDto book = new BookInfoDto("Refactoring", "Fowler", "978-1234567876");
-        PublishedBookInfoDto pubBook = new PublishedBookInfoDto("Refactoring", "978-1111111111", 40.00,2002);
+        PublishedBookDto pubBook = new PublishedBookDto("Refactoring", "978-1111111111", 40.00,2002);
         PublisherDto publisher = new PublisherDto("O'Reilly", "USA", List.of(pubBook));
         BookBundleDto bookBundleDto = new BookBundleDto(List.of(book), List.of(publisher));
 
