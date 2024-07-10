@@ -10,13 +10,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class BookBundleTest {
 
-    /**
-     * Book not present: exception
-     * DONE
-     * Retrieve the edition of a book with one book in the catalog and one publisher
-     * Retrieve the edition of a book with two books and two publisher
-     */
-
     @Test
     void retrieveTheEditionWithOneBookAndOnePublisher() {
         Book book = Book.builder()
