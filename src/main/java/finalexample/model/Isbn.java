@@ -1,6 +1,4 @@
-package finalexample.dtos;
-
-import finalexample.model.ValidationException;
+package finalexample.model;
 
 public class Isbn {
     private final String isbn;
