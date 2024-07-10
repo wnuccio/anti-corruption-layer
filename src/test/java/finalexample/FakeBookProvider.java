@@ -8,7 +8,7 @@ import finalexample.provider.PublisherDto;
 
 import java.util.List;
 
-public class FakeBookProvider implements BookProvider {
+public class FakeBookProvider extends BookProvider {
     private final BookBundleDto bookBundleDto;
 
     public FakeBookProvider() {
