@@ -1,9 +1,9 @@
-package finalexample.model;
+package finalexample.domain;
 
 public class PublishedBookBuilder {
     private String title;
     private String isbn;
-    private Publisher publisher;
+    private String publisher;
     private int year;
     private double price;
 
@@ -18,7 +18,7 @@ public class PublishedBookBuilder {
     }
 
     public PublishedBookBuilder publisher(String publisherName) {
-        this.publisher = new Publisher(publisherName);
+        this.publisher = publisherName;
         return this;
     }
 
@@ -33,6 +33,6 @@ public class PublishedBookBuilder {
     }
 
     public Book build() {
-        return new Book(title, isbn, publisher, year, price);
+        return new Book(title, Isbn.validate(isbn), new Publisher(publisher), year, price);
     }
 }

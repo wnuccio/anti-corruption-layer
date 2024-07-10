@@ -1,15 +1,15 @@
-package finalexample.model;
+package finalexample.domain;
 
 import java.util.Objects;
 
 public class Book {
     private final String title;
-    private final String isbn;
+    private final Isbn isbn;
     private final Publisher publisher;
     private final int year;
     private final double price;
 
-    public Book(String title, String isbn, Publisher publisher, int year, double price) {
+    public Book(String title, Isbn isbn, Publisher publisher, int year, double price) {
         this.title = title;
         this.isbn = isbn;
         this.publisher = publisher;
@@ -37,7 +37,7 @@ public class Book {
         return price;
     }
 
-    public boolean hasIsbn(String isbn) {
+    public boolean hasIsbn(Isbn isbn) {
         return this.isbn.equals(isbn);
     }
 

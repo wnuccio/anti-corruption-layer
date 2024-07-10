@@ -1,4 +1,4 @@
-package finalexample.model;
+package finalexample.domain;
 
 import java.util.Objects;
 

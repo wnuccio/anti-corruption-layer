@@ -1,13 +1,13 @@
 package finalexample;
 
+import finalexample.domain.Book;
+import finalexample.domain.BookBundle;
+import finalexample.domain.ValidationException;
 import finalexample.dtos.BookBundleDto;
 import finalexample.dtos.BookInfoDto;
 import finalexample.dtos.PublishedBookDto;
 import finalexample.dtos.PublisherDto;
 import finalexample.mapping.BookBundleDtoMapper;
-import finalexample.model.Book;
-import finalexample.model.BookBundle;
-import finalexample.model.ValidationException;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package finalexample.model;
+package finalexample.domain;
 
 import java.util.List;
 import java.util.Objects;
@@ -14,7 +14,7 @@ public class BookBundle {
         this.books = books;
     }
 
-    public Edition editionOf(String isbn) {
+    public Edition editionOf(Isbn isbn) {
         Book book = books.stream()
                 .filter(b -> b.hasIsbn(isbn))
                 .findFirst()

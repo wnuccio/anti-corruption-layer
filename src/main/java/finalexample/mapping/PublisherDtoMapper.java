@@ -1,7 +1,8 @@
 package finalexample.mapping;
 
+import finalexample.domain.Isbn;
+import finalexample.domain.Publisher;
 import finalexample.dtos.PublisherDto;
-import finalexample.model.Publisher;
 
 import java.util.List;
 
@@ -18,7 +19,7 @@ public class PublisherDtoMapper {
                 .collect(toList());
     }
 
-    public boolean hasIsbn(String isbn) {
+    public boolean hasIsbn(Isbn isbn) {
         return publishedBookInfoDtoMappers.stream()
                 .anyMatch(publishedBookInfo -> publishedBookInfo.hasIsbn(isbn));
     }
@@ -27,7 +28,7 @@ public class PublisherDtoMapper {
         return new Publisher(publisherDto.getName());
     }
 
-    public PublishedBookInfoDtoMapper publisherBookInfoMapperOf(String isbn) {
+    public PublishedBookInfoDtoMapper publisherBookInfoMapperOf(Isbn isbn) {
         return publishedBookInfoDtoMappers.stream()
                 .filter(publishedBookInfoDtoMapper -> publishedBookInfoDtoMapper.hasIsbn(isbn))
                 .findFirst()

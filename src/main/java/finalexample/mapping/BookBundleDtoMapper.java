@@ -1,10 +1,11 @@
 package finalexample.mapping;
 
+import finalexample.domain.Book;
+import finalexample.domain.BookBundle;
+import finalexample.domain.Isbn;
+import finalexample.domain.Publisher;
+import finalexample.domain.ValidationException;
 import finalexample.dtos.BookBundleDto;
-import finalexample.model.Book;
-import finalexample.model.BookBundle;
-import finalexample.model.Publisher;
-import finalexample.model.ValidationException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,9 +30,9 @@ public class BookBundleDtoMapper {
 
         for (BookInfoDtoMapper bookInfoMapper : bookInfoDtoMappers) {
             String title = bookInfoMapper.toTitle();
-            String isbn = bookInfoMapper.toIsbn().isbn();
+            Isbn isbn = bookInfoMapper.toIsbn();
 
-            PublisherDtoMapper publisherMapper = publisherOf(publisherDtoMappers, bookInfoMapper.toIsbn().isbn());
+            PublisherDtoMapper publisherMapper = publisherOf(publisherDtoMappers, isbn);
             Publisher publisher = publisherMapper.toPublisher();
 
             PublishedBookInfoDtoMapper publishedBookInfoDtoMapper = publisherMapper.publisherBookInfoMapperOf(isbn);
@@ -45,7 +46,7 @@ public class BookBundleDtoMapper {
         return new BookBundle(books);
     }
 
-    private PublisherDtoMapper publisherOf(List<PublisherDtoMapper> publishers, String isbn) {
+    private PublisherDtoMapper publisherOf(List<PublisherDtoMapper> publishers, Isbn isbn) {
         return publishers.stream()
                 .filter(publisherDtoMapper -> publisherDtoMapper.hasIsbn(isbn))
                 .findFirst()

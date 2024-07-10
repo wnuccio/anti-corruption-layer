@@ -1,7 +1,7 @@
 package finalexample.mapping;
 
+import finalexample.domain.Isbn;
 import finalexample.dtos.BookInfoDto;
-import finalexample.model.Isbn;
 
 public class BookInfoDtoMapper {
     BookInfoDto bookInfoDto;

@@ -1,8 +1,9 @@
 package finalexample;
 
-import finalexample.model.Book;
-import finalexample.model.BookBundle;
-import finalexample.model.Edition;
+import finalexample.domain.Book;
+import finalexample.domain.BookBundle;
+import finalexample.domain.Edition;
+import finalexample.domain.Isbn;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -27,7 +28,8 @@ class BookBundleTest {
                 .build();
         BookBundle bundle = new BookBundle(book);
 
-        Edition edition = bundle.editionOf("978-0201633610");
+        Isbn isbn = Isbn.validate("978-0201633610");
+        Edition edition = bundle.editionOf(isbn);
 
         assertEquals(edition, new Edition("Design Patterns", "Addison-Wesley", 1994, 30.00));
     }
@@ -52,7 +54,8 @@ class BookBundleTest {
 
         BookBundle bundle = new BookBundle(book1, book2);
 
-        Edition edition = bundle.editionOf("978-0201633610");
+        Isbn isbn = Isbn.validate("978-0201633610");
+        Edition edition = bundle.editionOf(isbn);
 
         assertEquals(edition, new Edition("Design Patterns", "Addison-Wesley", 2000, 30.00));
     }

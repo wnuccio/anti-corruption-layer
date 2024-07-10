@@ -1,5 +1,6 @@
 package finalexample.mapping;
 
+import finalexample.domain.Isbn;
 import finalexample.dtos.PublishedBookDto;
 
 public class PublishedBookInfoDtoMapper {
@@ -9,8 +10,8 @@ public class PublishedBookInfoDtoMapper {
         this.publishedBookDto = publishedBookDto;
     }
 
-    public boolean hasIsbn(String isbn) {
-        return publishedBookDto.getIsbn().equals(isbn);
+    public boolean hasIsbn(Isbn isbn) {
+        return publishedBookDto.getIsbn().equals(isbn.asString());
     }
 
     public int toYear() {
