@@ -4,6 +4,7 @@ import finalexample.domain.BookBundle;
 import finalexample.domain.BookService;
 import finalexample.domain.Isbn;
 import finalexample.mapping.BookBundleDtoMapper;
+import finalexample.provider.dtos.BookBundleDto;
 
 public class BookProviderAdapter implements BookService {
 

@@ -2,7 +2,7 @@ package finalexample.mapping;
 
 import finalexample.domain.Isbn;
 import finalexample.domain.Price;
-import finalexample.provider.PublishedBookDto;
+import finalexample.provider.dtos.PublishedBookDto;
 
 public class PublishedBookInfoDtoMapper {
     private final PublishedBookDto publishedBookDto;

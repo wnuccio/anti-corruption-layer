@@ -2,7 +2,7 @@ package finalexample.mapping;
 
 import finalexample.domain.Isbn;
 import finalexample.domain.Publisher;
-import finalexample.provider.PublisherDto;
+import finalexample.provider.dtos.PublisherDto;
 
 import java.util.List;
 

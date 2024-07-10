@@ -1,4 +1,4 @@
-package finalexample.provider;
+package finalexample.provider.dtos;
 
 public class PublishedBookDto {
     String title;
