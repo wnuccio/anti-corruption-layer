@@ -5,12 +5,12 @@ import finalexample.domain.BookBundle;
 import finalexample.domain.BookService;
 import finalexample.domain.Isbn;
 import finalexample.domain.ValidationException;
-import finalexample.mapping.BookBundleDtoMapper;
 import finalexample.provider.BookProviderAdapter;
 import finalexample.provider.dtos.BookBundleDto;
 import finalexample.provider.dtos.BookInfoDto;
 import finalexample.provider.dtos.PublishedBookDto;
 import finalexample.provider.dtos.PublisherDto;
+import finalexample.provider.mappers.BookBundleDtoMapper;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;

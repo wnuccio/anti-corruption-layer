@@ -1,4 +1,4 @@
-package finalexample.mapping;
+package finalexample.provider.mappers;
 
 import finalexample.domain.Isbn;
 import finalexample.domain.Price;
