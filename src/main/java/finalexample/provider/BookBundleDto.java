@@ -11,6 +11,10 @@ public class BookBundleDto {
         this.publishers = publishers;
     }
 
+    public static BookBundleDtoBuilder builder() {
+        return new BookBundleDtoBuilder();
+    }
+
     public List<BookInfoDto> getBookInfo() {
         return bookInfo;
     }

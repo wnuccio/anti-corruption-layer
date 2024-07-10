@@ -22,7 +22,7 @@ class BookProviderAdapterTest {
 
     @Test
     void retrieve_book_bundle_with_one_book_by_isbn() {
-        FakeBookProvider bookProvider = new FakeBookProvider("978-0201633610");
+        FakeBookProvider bookProvider = new FakeBookProvider();
         BookService bookService = new BookProviderAdapter(bookProvider);
 
         Isbn isbn = Isbn.validate("978-0201633610");
@@ -49,20 +49,20 @@ class BookProviderAdapterTest {
 
     @Test
     void bundle_with_invalid_isbn_is_rejected() {
-        BookInfoDto book = new BookInfoDto("Refactoring", "Fowler", "xxxx");
-        PublishedBookDto pubBook = new PublishedBookDto("Refactoring", "xxxx", 40.00,2002);
-        PublisherDto publisher = new PublisherDto("O'Reilly", "USA", List.of(pubBook));
-        BookBundleDto bookBundleDto = new BookBundleDto(List.of(book), List.of(publisher));
+        BookBundleDto bundleDto = BookBundleDto.builder()
+                .addBookWithIsbn("xxxx")
+                .build();
+        FakeBookProvider bookProvider = new FakeBookProvider(bundleDto);
+        BookService bookService = new BookProviderAdapter(bookProvider);
 
-        BookBundleDtoMapper mapper = new BookBundleDtoMapper(bookBundleDto);
-
-        assertThrows(ValidationException.class, () -> mapper.toBundle());
+        Isbn isbn = Isbn.validate("978-0201633610");
+        assertThrows(ValidationException.class, () -> bookService.retrieveBook(isbn));
     }
 
     @Test
     void bundle_with_isbn_not_referred_by_any_publisher_is_rejected() {
         BookInfoDto book = new BookInfoDto("Refactoring", "Fowler", "978-1234567876");
-        PublishedBookDto pubBook = new PublishedBookDto("Refactoring", "978-1111111111", 40.00,2002);
+        PublishedBookDto pubBook = new PublishedBookDto("Refactoring", "978-1111111111", 40.00, 2002);
         PublisherDto publisher = new PublisherDto("O'Reilly", "USA", List.of(pubBook));
         BookBundleDto bookBundleDto = new BookBundleDto(List.of(book), List.of(publisher));
 
@@ -74,7 +74,7 @@ class BookProviderAdapterTest {
     @Test
     void bundle_with_invalid_price_is_rejected() {
         BookInfoDto book = new BookInfoDto("Refactoring", "Fowler", "978-1234567876");
-        PublishedBookDto pubBook = new PublishedBookDto("Refactoring", "978-1234567876", -40.00,2002);
+        PublishedBookDto pubBook = new PublishedBookDto("Refactoring", "978-1234567876", -40.00, 2002);
         PublisherDto publisher = new PublisherDto("O'Reilly", "USA", List.of(pubBook));
         BookBundleDto bookBundleDto = new BookBundleDto(List.of(book), List.of(publisher));
 

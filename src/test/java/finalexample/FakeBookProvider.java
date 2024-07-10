@@ -9,13 +9,9 @@ import finalexample.provider.PublisherDto;
 import java.util.List;
 
 public class FakeBookProvider implements BookProvider {
-    private final String isbn;
-
     private final BookBundleDto bookBundleDto;
 
-    public FakeBookProvider(String isbn) {
-        this.isbn = isbn;
-
+    public FakeBookProvider() {
         BookInfoDto book1 = new BookInfoDto("Refactoring", "Fowler", "978-1234567876");
         BookInfoDto book2 = new BookInfoDto("Design Patterns", "Gof", "978-0201633610");
 
@@ -26,30 +22,14 @@ public class FakeBookProvider implements BookProvider {
         PublisherDto publisher2 = new PublisherDto("Addison-Wesley", "USA", List.of(pubBook2));
 
         this.bookBundleDto = new BookBundleDto(List.of(book1, book2), List.of(publisher1, publisher2));
+    }
 
-//        this.bundle = new BookBundle(
-//                Book.builder()
-//                        .title("Refactoring")
-//                        .isbn("978-1234567876")
-//                        .publisher("O'Reilly")
-//                        .year(2002)
-//                        .price(40.00)
-//                        .build(),
-//                Book.builder()
-//                        .title("Design Patterns")
-//                        .isbn("978-0201633610")
-//                        .publisher("Addison-Wesley")
-//                        .year(2000)
-//                        .price(30.00)
-//                        .build());
+    public FakeBookProvider(BookBundleDto bookBundleDto) {
+        this.bookBundleDto = bookBundleDto;
     }
 
     @Override
     public BookBundleDto getBundle(String isbn) {
-        if (this.isbn.equals(isbn)) {
-            return bookBundleDto;
-        }
-
         return bookBundleDto;
     }
 }
