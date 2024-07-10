@@ -2,10 +2,13 @@ package finalexample;
 
 import finalexample.domain.Book;
 import finalexample.domain.BookBundle;
+import finalexample.domain.BookService;
+import finalexample.domain.Isbn;
 import finalexample.domain.ValidationException;
 import finalexample.mapping.BookBundleDtoMapper;
 import finalexample.provider.BookBundleDto;
 import finalexample.provider.BookInfoDto;
+import finalexample.provider.BookProviderAdapter;
 import finalexample.provider.PublishedBookDto;
 import finalexample.provider.PublisherDto;
 import org.junit.jupiter.api.Test;
@@ -15,22 +18,15 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-class BookBundleDtoMapperTest {
+class BookProviderAdapterTest {
 
     @Test
-    void map_book_bundle_dto_to_book_bundle() {
-        BookInfoDto book1 = new BookInfoDto("Refactoring", "Fowler", "978-1234567876");
-        BookInfoDto book2 = new BookInfoDto("Design Patterns", "Gof", "978-0201633610");
+    void retrieve_book_bundle_with_one_book_by_isbn() {
+        FakeBookProvider bookProvider = new FakeBookProvider("978-0201633610");
+        BookService bookService = new BookProviderAdapter(bookProvider);
 
-        PublishedBookDto pubBook1 = new PublishedBookDto("Refactoring", "978-1234567876", 40.00,2002);
-        PublishedBookDto pubBook2 = new PublishedBookDto("Design Pattern", "978-0201633610", 30.00,2000);
-
-        PublisherDto publisher1 = new PublisherDto("O'Reilly", "USA", List.of(pubBook1));
-        PublisherDto publisher2 = new PublisherDto("Addison-Wesley", "USA", List.of(pubBook2));
-
-        BookBundleDto bookBundleDto = new BookBundleDto(List.of(book1, book2), List.of(publisher1, publisher2));
-
-        BookBundle actualBundle = new BookBundleDtoMapper(bookBundleDto).toBundle();
+        Isbn isbn = Isbn.validate("978-0201633610");
+        BookBundle actualBundle = bookService.retrieveBook(isbn);
 
         BookBundle expectedBundle = new BookBundle(
                 Book.builder()

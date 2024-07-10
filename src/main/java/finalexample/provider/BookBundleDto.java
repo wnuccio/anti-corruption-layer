@@ -1,4 +1,4 @@
-package finalexample.dtos;
+package finalexample.provider;
 
 import java.util.List;
 

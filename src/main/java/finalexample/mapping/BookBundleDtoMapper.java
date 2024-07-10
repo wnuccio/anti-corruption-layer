@@ -6,7 +6,7 @@ import finalexample.domain.Isbn;
 import finalexample.domain.Price;
 import finalexample.domain.Publisher;
 import finalexample.domain.ValidationException;
-import finalexample.dtos.BookBundleDto;
+import finalexample.provider.BookBundleDto;
 
 import java.util.ArrayList;
 import java.util.List;
