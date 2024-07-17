@@ -1,10 +1,10 @@
 package finalexample;
 
-import finalexample.provider.BookProvider;
-import finalexample.provider.dtos.BookBundleDto;
-import finalexample.provider.dtos.BookInfoDto;
-import finalexample.provider.dtos.PublishedBookDto;
-import finalexample.provider.dtos.PublisherDto;
+import finalexample.acl.BookProvider;
+import finalexample.acl.dtos.BookBundleDto;
+import finalexample.acl.dtos.BookInfoDto;
+import finalexample.acl.dtos.PublishedBookDto;
+import finalexample.acl.dtos.PublisherDto;
 
 import java.util.List;
 

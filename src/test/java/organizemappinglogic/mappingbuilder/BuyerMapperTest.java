@@ -1,12 +1,12 @@
 package organizemappinglogic.mappingbuilder;
 
 import org.junit.jupiter.api.Test;
+import organizemappinglogic.mappingbuilder.acl.BookDto;
+import organizemappinglogic.mappingbuilder.acl.BuyerDto;
+import organizemappinglogic.mappingbuilder.acl.BuyerMapperImpl;
 import organizemappinglogic.mappingbuilder.domain.Book;
 import organizemappinglogic.mappingbuilder.domain.Buyer;
 import organizemappinglogic.mappingbuilder.domain.Isbn;
-import organizemappinglogic.mappingbuilder.provider.BookDto;
-import organizemappinglogic.mappingbuilder.provider.BuyerDto;
-import organizemappinglogic.mappingbuilder.provider.BuyerMapperImpl;
 
 import java.util.List;
 

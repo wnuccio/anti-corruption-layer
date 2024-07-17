@@ -1,10 +1,10 @@
-package finalexample.provider;
+package finalexample.acl;
 
+import finalexample.acl.dtos.BookBundleDto;
+import finalexample.acl.mappers.BookBundleDtoMapper;
 import finalexample.domain.BookBundle;
 import finalexample.domain.BookService;
 import finalexample.domain.Isbn;
-import finalexample.provider.dtos.BookBundleDto;
-import finalexample.provider.mappers.BookBundleDtoMapper;
 
 public class BookProviderAdapter implements BookService {
 

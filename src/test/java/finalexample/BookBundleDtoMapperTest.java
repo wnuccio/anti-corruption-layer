@@ -1,13 +1,13 @@
 package finalexample;
 
+import finalexample.acl.dtos.BookBundleDto;
+import finalexample.acl.dtos.BookInfoDto;
+import finalexample.acl.dtos.PublishedBookDto;
+import finalexample.acl.dtos.PublisherDto;
+import finalexample.acl.mappers.BookBundleDtoMapper;
 import finalexample.domain.Book;
 import finalexample.domain.BookBundle;
 import finalexample.domain.ValidationException;
-import finalexample.provider.dtos.BookBundleDto;
-import finalexample.provider.dtos.BookInfoDto;
-import finalexample.provider.dtos.PublishedBookDto;
-import finalexample.provider.dtos.PublisherDto;
-import finalexample.provider.mappers.BookBundleDtoMapper;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;

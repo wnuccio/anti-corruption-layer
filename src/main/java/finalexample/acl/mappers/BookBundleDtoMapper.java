@@ -1,12 +1,12 @@
-package finalexample.provider.mappers;
+package finalexample.acl.mappers;
 
+import finalexample.acl.dtos.BookBundleDto;
 import finalexample.domain.Book;
 import finalexample.domain.BookBundle;
 import finalexample.domain.Isbn;
 import finalexample.domain.Price;
 import finalexample.domain.Publisher;
 import finalexample.domain.ValidationException;
-import finalexample.provider.dtos.BookBundleDto;
 
 import java.util.ArrayList;
 import java.util.List;

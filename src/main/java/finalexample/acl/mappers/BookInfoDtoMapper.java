@@ -1,7 +1,7 @@
-package finalexample.provider.mappers;
+package finalexample.acl.mappers;
 
+import finalexample.acl.dtos.BookInfoDto;
 import finalexample.domain.Isbn;
-import finalexample.provider.dtos.BookInfoDto;
 
 public class BookInfoDtoMapper {
     BookInfoDto bookInfoDto;

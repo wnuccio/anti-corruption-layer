@@ -1,4 +1,4 @@
-package organizemappinglogic.mappingbuilder.provider;
+package organizemappinglogic.mappingbuilder.acl;
 
 import organizemappinglogic.mappingbuilder.domain.BookMapper;
 

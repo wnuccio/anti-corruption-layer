@@ -1,6 +1,6 @@
-package finalexample.provider;
+package finalexample.acl;
 
-import finalexample.provider.dtos.BookBundleDto;
+import finalexample.acl.dtos.BookBundleDto;
 
 public class BookProvider {
     public BookBundleDto getBundle(String isbn) {
