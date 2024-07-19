@@ -1,4 +1,4 @@
-package organizemappinglogic.mappingbuilder.domain;
+package organizemappinglogic.mappingvisitor.domain;
 
 public class Book {
     Isbn isbn;

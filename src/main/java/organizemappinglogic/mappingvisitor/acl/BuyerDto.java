@@ -1,4 +1,4 @@
-package organizemappinglogic.mappingbuilder.acl;
+package organizemappinglogic.mappingvisitor.acl;
 
 import java.util.List;
 

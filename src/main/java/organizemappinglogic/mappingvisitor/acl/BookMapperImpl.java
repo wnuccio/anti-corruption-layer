@@ -1,6 +1,6 @@
-package organizemappinglogic.mappingbuilder.acl;
+package organizemappinglogic.mappingvisitor.acl;
 
-import organizemappinglogic.mappingbuilder.domain.BookMapper;
+import organizemappinglogic.mappingvisitor.domain.BookMapper;
 
 public class BookMapperImpl implements BookMapper {
     private final BookDto bookDto = new BookDto();

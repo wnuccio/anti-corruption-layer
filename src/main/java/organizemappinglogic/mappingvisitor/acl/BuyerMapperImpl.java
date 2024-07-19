@@ -1,7 +1,7 @@
-package organizemappinglogic.mappingbuilder.acl;
+package organizemappinglogic.mappingvisitor.acl;
 
-import organizemappinglogic.mappingbuilder.domain.Book;
-import organizemappinglogic.mappingbuilder.domain.BuyerMapper;
+import organizemappinglogic.mappingvisitor.domain.Book;
+import organizemappinglogic.mappingvisitor.domain.BuyerMapper;
 
 import java.util.ArrayList;
 import java.util.List;
