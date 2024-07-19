@@ -49,7 +49,7 @@ class BookProviderAdapterTest {
 
     @Test
     void bundle_with_invalid_isbn_is_rejected() {
-        BookBundleDto bundleDto = BookBundleDto.builder()
+        BookBundleDto bundleDto = new BookBundleDtoBuilder()
                 .addBookWithIsbn("xxxx")
                 .build();
         FakeBookProvider bookProvider = new FakeBookProvider(bundleDto);

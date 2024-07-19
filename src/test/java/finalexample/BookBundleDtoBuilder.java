@@ -1,4 +1,9 @@
-package finalexample.acl.dtos;
+package finalexample;
+
+import finalexample.acl.dtos.BookBundleDto;
+import finalexample.acl.dtos.BookInfoDto;
+import finalexample.acl.dtos.PublishedBookDto;
+import finalexample.acl.dtos.PublisherDto;
 
 import java.util.List;
 
