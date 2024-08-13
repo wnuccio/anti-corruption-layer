@@ -7,6 +7,8 @@ public class BookBuilder {
     private String title;
     private Isbn isbn;
     private Price price;
+    private String authorName;
+    private String authorSurname;
 
     public BookBuilder withTitle(String title) {
         this.title = title;
@@ -32,7 +34,18 @@ public class BookBuilder {
         return this;
     }
 
+    public BookBuilder withAuthorName(String authorName) {
+        this.authorName = authorName;
+        return this;
+    }
+
+    public BookBuilder witAuthorSurname(String authorSurname) {
+        this.authorSurname = authorSurname;
+        return this;
+    }
+
     public Book build() {
-        return new Book(title, isbn, price);
+        Author author = new Author(authorName, authorSurname);
+        return new Book(title, isbn, price, author);
     }
 }

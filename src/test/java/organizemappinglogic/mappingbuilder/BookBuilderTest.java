@@ -6,12 +6,12 @@ class BookBuilderTest {
 
     @Test
     void testBuilder() {
-
         Book book = new BookBuilder()
                 .withTitle("The Hobbit")
                 .withIsbn("978-3-86680-192-9")
                 .withPrice(30, "EUR")
+                .withAuthorName("John Ronald Reuen")
+                .witAuthorSurname("Tolkien")
                 .build();
-
     }
 }
