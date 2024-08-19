@@ -61,14 +61,18 @@ class BookProviderAdapterTest {
 
     @Test
     void bundle_with_isbn_not_referred_by_any_publisher_is_rejected() {
-        BookInfoDto book = new BookInfoDto("Refactoring", "Fowler", "978-1234567876");
-        PublishedBookDto pubBook = new PublishedBookDto("Refactoring", "978-1111111111", 40.00, 2002);
-        PublisherDto publisher = new PublisherDto("O'Reilly", "USA", List.of(pubBook));
-        BookBundleDto bookBundleDto = new BookBundleDto(List.of(book), List.of(publisher));
+        BookInfoDto bookInfoDto = new BookInfoDto("Refactoring", "Fowler", "978-1234567876");
+        PublishedBookDto publishedBookDto = new PublishedBookDto("Refactoring",
+                "978-1111111111", // wrong isbn
+                40.00,
+                2002);
+        PublisherDto publisherDto = new PublisherDto("O'Reilly", "USA", List.of(publishedBookDto));
+        BookBundleDto bookBundleDto = new BookBundleDto(List.of(bookInfoDto), List.of(publisherDto));
+        FakeBookProvider bookProvider = new FakeBookProvider(bookBundleDto);
+        BookService bookService = new BookProviderAdapter(bookProvider);
+        Isbn isbn = Isbn.validate("978-1234567876");
 
-        BookBundleDtoMapper mapper = new BookBundleDtoMapper(bookBundleDto);
-
-        assertThrows(ValidationException.class, () -> mapper.toBundle());
+        assertThrows(ValidationException.class, () -> bookService.retrieveBook(isbn));
     }
 
     @Test
