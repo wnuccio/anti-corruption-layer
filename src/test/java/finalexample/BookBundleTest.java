@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class BookBundleTest {
 
     @Test
-    void retrieveTheEditionWithOneBookAndOnePublisher() {
+    void retrieve_the_edition_from_bundle_with_one_book_and_one_publisher() {
         Book book = Book.builder()
                 .title("Design Patterns")
                 .isbn("978-0201633610")
@@ -21,14 +21,13 @@ class BookBundleTest {
                 .build();
         BookBundle bundle = new BookBundle(book);
 
-        Isbn isbn = Isbn.validate("978-0201633610");
-        Edition edition = bundle.editionOf(isbn);
+        Edition edition = bundle.editionOf(Isbn.validate("978-0201633610"));
 
         assertEquals(edition, new Edition("Design Patterns", "Addison-Wesley", 1994, 30.00));
     }
 
     @Test
-    void retrieveTheEditionWithTwoBooksAndTwoPublishers() {
+    void retrieve_the_edition_from_bundle_with_two_books_and_two_publishers() {
         Book book1 = Book.builder()
                 .title("Refactoring")
                 .isbn("978-1234567876")
@@ -36,7 +35,6 @@ class BookBundleTest {
                 .year(2002)
                 .price(40.00)
                 .build();
-
         Book book2 = Book.builder()
                 .title("Design Patterns")
                 .isbn("978-0201633610")
@@ -44,11 +42,9 @@ class BookBundleTest {
                 .year(2000)
                 .price(30.00)
                 .build();
-
         BookBundle bundle = new BookBundle(book1, book2);
 
-        Isbn isbn = Isbn.validate("978-0201633610");
-        Edition edition = bundle.editionOf(isbn);
+        Edition edition = bundle.editionOf(Isbn.validate("978-0201633610"));
 
         assertEquals(edition, new Edition("Design Patterns", "Addison-Wesley", 2000, 30.00));
     }
