@@ -6,6 +6,9 @@ import finalexample.domain.BookBundle;
 import finalexample.domain.BookService;
 import finalexample.domain.Isbn;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class BookProviderAdapter implements BookService {
 
     private final BookProvider bookProvider;
@@ -16,7 +19,13 @@ public class BookProviderAdapter implements BookService {
 
     @Override
     public BookBundle retrieveBook(Isbn isbn) {
-        BookBundleDto bookBundleDto = bookProvider.getBundle(isbn.asString());
+        return retrieveBook(List.of(isbn));
+    }
+
+    @Override
+    public BookBundle retrieveBook(List<Isbn> isbnList) {
+        List<String> isbnStrings = isbnList.stream().map(Isbn::asString).collect(Collectors.toList());
+        BookBundleDto bookBundleDto = bookProvider.getBundle(isbnStrings);
         BookBundleDtoMapper mapper = new BookBundleDtoMapper(bookBundleDto);
         return mapper.toBundle();
     }

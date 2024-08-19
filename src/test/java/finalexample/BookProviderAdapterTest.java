@@ -21,13 +21,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 class BookProviderAdapterTest {
 
     @Test
-    void retrieve_book_bundle_with_one_book_by_isbn() {
+    void retrieve_book_bundle_with_two_books_by_isbn_list() {
         FakeBookProvider bookProvider = new FakeBookProvider();
         BookService bookService = new BookProviderAdapter(bookProvider);
-
-        Isbn isbn = Isbn.validate("978-0201633610");
-        BookBundle actualBundle = bookService.retrieveBook(isbn);
-
         BookBundle expectedBundle = new BookBundle(
                 Book.builder()
                         .title("Refactoring")
@@ -43,6 +39,10 @@ class BookProviderAdapterTest {
                         .year(2000)
                         .price(30.00)
                         .build());
+        Isbn isbn1 = Isbn.validate("978-1234567876");
+        Isbn isbn2 = Isbn.validate("978-0201633610");
+
+        BookBundle actualBundle = bookService.retrieveBook(List.of(isbn1, isbn2));
 
         assertEquals(expectedBundle, actualBundle);
     }
@@ -50,12 +50,12 @@ class BookProviderAdapterTest {
     @Test
     void bundle_with_invalid_isbn_is_rejected() {
         BookBundleDto bundleDto = new BookBundleDtoBuilder()
-                .addBookWithIsbn("xxxx")
+                .addBookWithIsbn("xxxx 978-0201633610 xxxx") // invalid isbn
                 .build();
         FakeBookProvider bookProvider = new FakeBookProvider(bundleDto);
         BookService bookService = new BookProviderAdapter(bookProvider);
-
         Isbn isbn = Isbn.validate("978-0201633610");
+
         assertThrows(ValidationException.class, () -> bookService.retrieveBook(isbn));
     }
 

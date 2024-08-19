@@ -29,7 +29,7 @@ public class FakeBookProvider extends BookProvider {
     }
 
     @Override
-    public BookBundleDto getBundle(String isbn) {
+    public BookBundleDto getBundle(List<String> isbnList) {
         return bookBundleDto;
     }
 }
