@@ -5,7 +5,6 @@ import finalexample.acl.dtos.BookBundleDto;
 import finalexample.acl.dtos.BookInfoDto;
 import finalexample.acl.dtos.PublishedBookDto;
 import finalexample.acl.dtos.PublisherDto;
-import finalexample.acl.mappers.BookBundleDtoMapper;
 import finalexample.domain.Book;
 import finalexample.domain.BookBundle;
 import finalexample.domain.BookService;
@@ -77,13 +76,17 @@ class BookProviderAdapterTest {
 
     @Test
     void bundle_with_invalid_price_is_rejected() {
-        BookInfoDto book = new BookInfoDto("Refactoring", "Fowler", "978-1234567876");
-        PublishedBookDto pubBook = new PublishedBookDto("Refactoring", "978-1234567876", -40.00, 2002);
-        PublisherDto publisher = new PublisherDto("O'Reilly", "USA", List.of(pubBook));
-        BookBundleDto bookBundleDto = new BookBundleDto(List.of(book), List.of(publisher));
+        BookInfoDto bookInfoDto = new BookInfoDto("Refactoring", "Fowler", "978-1234567876");
+        PublishedBookDto publishedBookDto = new PublishedBookDto("Refactoring",
+                "978-1234567876",
+                -40.00, // negative price
+                2002);
+        PublisherDto publisher = new PublisherDto("O'Reilly", "USA", List.of(publishedBookDto));
+        BookBundleDto bookBundleDto = new BookBundleDto(List.of(bookInfoDto), List.of(publisher));
+        FakeBookProvider bookProvider = new FakeBookProvider(bookBundleDto);
+        BookService bookService = new BookProviderAdapter(bookProvider);
+        Isbn isbn = Isbn.validate("978-1234567876");
 
-        BookBundleDtoMapper mapper = new BookBundleDtoMapper(bookBundleDto);
-
-        assertThrows(ValidationException.class, () -> mapper.toBundle());
+        assertThrows(ValidationException.class, () -> bookService.retrieveBook(isbn));
     }
 }
