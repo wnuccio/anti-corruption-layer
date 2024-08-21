@@ -6,9 +6,9 @@ class BookBuilderTest {
 
     @Test
     void testBuilder() {
-        Book book = new BookBuilder()
+        new BookBuilder()
                 .withTitle("The Hobbit")
-                .withIsbn("978-3-86680-192-9")
+                .withIsbn("123456789X")
                 .withPrice(30, "EUR")
                 .withAuthorName("John Ronald Reuen")
                 .witAuthorSurname("Tolkien")
