@@ -3,7 +3,7 @@ package finalexample.domain;
 import java.util.List;
 
 public interface BookService {
-    BookBundle retrieveBook(Isbn isbn);
+    BookBundle retrieveBooks(String keyword);
 
-    BookBundle retrieveBook(List<Isbn> isbnList);
+    BookBundle retrieveBooks(List<String> keywords);
 }

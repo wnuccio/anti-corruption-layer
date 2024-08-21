@@ -4,10 +4,8 @@ import finalexample.acl.dtos.BookBundleDto;
 import finalexample.acl.mappers.BookBundleDtoMapper;
 import finalexample.domain.BookBundle;
 import finalexample.domain.BookService;
-import finalexample.domain.Isbn;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class BookProviderAdapter implements BookService {
 
@@ -18,15 +16,16 @@ public class BookProviderAdapter implements BookService {
     }
 
     @Override
-    public BookBundle retrieveBook(Isbn isbn) {
-        return retrieveBook(List.of(isbn));
+    public BookBundle retrieveBooks(String keyword) {
+        return retrieveBooks(List.of(keyword));
     }
 
     @Override
-    public BookBundle retrieveBook(List<Isbn> isbnList) {
-        List<String> isbnStrings = isbnList.stream().map(Isbn::asString).collect(Collectors.toList());
-        BookBundleDto bookBundleDto = bookProvider.getBundle(isbnStrings);
-        BookBundleDtoMapper mapper = new BookBundleDtoMapper(bookBundleDto);
+    public BookBundle retrieveBooks(List<String> keywords) {
+        BookBundleDto bundleDto = bookProvider.getBookBundle(keywords);
+        BookBundleDtoMapper mapper = new BookBundleDtoMapper(bundleDto);
         return mapper.toBundle();
     }
+
+
 }
