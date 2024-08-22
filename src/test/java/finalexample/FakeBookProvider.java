@@ -16,11 +16,11 @@ public class FakeBookProvider extends BookProvider {
 
     public FakeBookProvider() {
         BookInfoDto book1 = new BookInfoDto("Refactoring", "Fowler", "978-1234567876",
-                List.of("refactoring", "clean-code", "martin-fowler"));
+                List.of("refactoring", "clean-code", "coding"));
         PublishedBookDto pubBook1 = new PublishedBookDto("Refactoring", "978-1234567876", 40.00, 2002);
 
         BookInfoDto book2 = new BookInfoDto("Design Patterns", "Gof", "978-0201633610",
-                List.of("design", "pattern"));
+                List.of("design", "pattern", "coding"));
         PublishedBookDto pubBook2 = new PublishedBookDto("Design Pattern", "978-0201633610", 30.00, 2000);
 
         BookInfoDto book3 = new BookInfoDto("Wrong Isbn", "Unknown", "xxxxxxxxxxxxx", "wrong-isbn");
