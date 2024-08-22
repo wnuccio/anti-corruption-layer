@@ -2,22 +2,23 @@ package finalexample;
 
 import finalexample.domain.Book;
 import finalexample.domain.BookBundle;
-import finalexample.domain.BookService;
+import finalexample.domain.BookProvider;
 import finalexample.domain.Isbn;
 
 public class BookUseCase {
-    private final BookService bookService;
+    private final BookProvider bookProvider;
 
-    public BookUseCase(BookService bookService) {
-        this.bookService = bookService;
+    public BookUseCase(BookProvider bookProvider) {
+        this.bookProvider = bookProvider;
     }
 
     public Book findBookByIsbn(Isbn isbn, String keyword) {
-        BookBundle bundle = bookService.retrieveBooks(keyword);
+        BookBundle bundle = bookProvider.retrieveBooks(keyword);
         return bundle.find(isbn);
     }
 
     public Book findLeastExpensiveBook(String keyword) {
-        return bookService.retrieveBooks(keyword).leastExpensive();
+        BookBundle bundle = bookProvider.retrieveBooks(keyword);
+        return bundle.leastExpensive();
     }
 }

@@ -19,10 +19,10 @@ public class BookBundleDtoMapper {
 
     public BookBundleDtoMapper(BookBundleDto bookBundleDto) {
         this.bookInfoDtoMappers = bookBundleDto.getBookInfo().stream()
-                .map(info -> new BookInfoDtoMapper(info))
+                .map(BookInfoDtoMapper::new)
                 .collect(toList());
         this.publisherDtoMappers = bookBundleDto.getPublishers().stream()
-                .map(publisher -> new PublisherDtoMapper(publisher))
+                .map(PublisherDtoMapper::new)
                 .collect(toList());
     }
 
@@ -36,9 +36,9 @@ public class BookBundleDtoMapper {
             PublisherDtoMapper publisherMapper = publisherOf(publisherDtoMappers, isbn);
             Publisher publisher = publisherMapper.toPublisher();
 
-            PublishedBookInfoDtoMapper publishedBookInfoDtoMapper = publisherMapper.publisherBookInfoMapperOf(isbn);
-            int year = publishedBookInfoDtoMapper.toYear();
-            Price price = publishedBookInfoDtoMapper.toPrice();
+            PublishedBookDtoMapper publishedBookDtoMapper = publisherMapper.publisherBookInfoMapperOf(isbn);
+            int year = publishedBookDtoMapper.toYear();
+            Price price = publishedBookDtoMapper.toPrice();
 
             Book book = new Book(title, isbn, publisher, year, price);
             books.add(book);

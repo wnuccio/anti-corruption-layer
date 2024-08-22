@@ -10,17 +10,17 @@ import static java.util.stream.Collectors.toList;
 
 public class PublisherDtoMapper {
     private final PublisherDto publisherDto;
-    private final List<PublishedBookInfoDtoMapper> publishedBookInfoDtoMappers;
+    private final List<PublishedBookDtoMapper> publishedBookDtoMappers;
 
     public PublisherDtoMapper(PublisherDto publisherDto) {
         this.publisherDto = publisherDto;
-        this.publishedBookInfoDtoMappers = publisherDto.getPublishedBooks().stream()
-                .map(publishedBookInfo -> new PublishedBookInfoDtoMapper(publishedBookInfo))
+        this.publishedBookDtoMappers = publisherDto.getPublishedBooks().stream()
+                .map(PublishedBookDtoMapper::new)
                 .collect(toList());
     }
 
     public boolean hasIsbn(Isbn isbn) {
-        return publishedBookInfoDtoMappers.stream()
+        return publishedBookDtoMappers.stream()
                 .anyMatch(publishedBookInfo -> publishedBookInfo.hasIsbn(isbn));
     }
 
@@ -28,9 +28,9 @@ public class PublisherDtoMapper {
         return new Publisher(publisherDto.getName());
     }
 
-    public PublishedBookInfoDtoMapper publisherBookInfoMapperOf(Isbn isbn) {
-        return publishedBookInfoDtoMappers.stream()
-                .filter(publishedBookInfoDtoMapper -> publishedBookInfoDtoMapper.hasIsbn(isbn))
+    public PublishedBookDtoMapper publisherBookInfoMapperOf(Isbn isbn) {
+        return publishedBookDtoMappers.stream()
+                .filter(publishedBookDtoMapper -> publishedBookDtoMapper.hasIsbn(isbn))
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException("Published book info not found"));
     }

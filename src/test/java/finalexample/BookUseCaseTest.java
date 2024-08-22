@@ -13,7 +13,7 @@ class BookUseCaseTest {
 
     @BeforeEach
     void setUp() {
-        FakeBookProvider provider = new FakeBookProvider();
+        FakeBookProviderClient provider = new FakeBookProviderClient();
         BookProviderAdapter adapter = new BookProviderAdapter(provider);
         bookUseCase = new BookUseCase(adapter);
     }

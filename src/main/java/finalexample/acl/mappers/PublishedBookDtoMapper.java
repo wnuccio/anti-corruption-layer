@@ -4,10 +4,10 @@ import finalexample.acl.dtos.PublishedBookDto;
 import finalexample.domain.Isbn;
 import finalexample.domain.Price;
 
-public class PublishedBookInfoDtoMapper {
+public class PublishedBookDtoMapper {
     private final PublishedBookDto publishedBookDto;
 
-    public PublishedBookInfoDtoMapper(PublishedBookDto publishedBookDto) {
+    public PublishedBookDtoMapper(PublishedBookDto publishedBookDto) {
         this.publishedBookDto = publishedBookDto;
     }
 

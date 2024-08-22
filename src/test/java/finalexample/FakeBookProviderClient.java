@@ -1,6 +1,6 @@
 package finalexample;
 
-import finalexample.acl.BookProvider;
+import finalexample.acl.BookProviderClient;
 import finalexample.acl.dtos.BookBundleDto;
 import finalexample.acl.dtos.BookInfoDto;
 import finalexample.acl.dtos.PublishedBookDto;
@@ -10,7 +10,7 @@ import java.util.List;
 
 import static java.util.stream.Collectors.toList;
 
-public class FakeBookProvider extends BookProvider {
+public class FakeBookProviderClient extends BookProviderClient {
     public static final BookInfoDto BOOK_1 = new BookInfoDto("Refactoring", "Fowler", "978-1234567876", List.of("refactoring", "clean-code", "coding"));
     public static final PublishedBookDto PUB_BOOK_1 = new PublishedBookDto("Refactoring", "978-1234567876", 10.00, 2002);
 
@@ -37,7 +37,7 @@ public class FakeBookProvider extends BookProvider {
     private final List<BookInfoDto> bookInfos;
     private final List<PublisherDto> publishers;
 
-    public FakeBookProvider() {
+    public FakeBookProviderClient() {
         this.bookInfos = List.of(BOOK_1, BOOK_2, BOOK_3, BOOK_4, BOOK_5, BOOK_6);
         this.publishers = List.of(PUBLISHER_A, PUBLISHER_B);
     }

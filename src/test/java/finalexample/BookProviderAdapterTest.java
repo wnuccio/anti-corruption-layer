@@ -3,7 +3,7 @@ package finalexample;
 import finalexample.acl.BookProviderAdapter;
 import finalexample.domain.Book;
 import finalexample.domain.BookBundle;
-import finalexample.domain.BookService;
+import finalexample.domain.BookProvider;
 import finalexample.domain.ValidationException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,12 +14,12 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class BookProviderAdapterTest {
 
-    private BookService bookService;
+    private BookProvider bookProvider;
 
     @BeforeEach
     void setUp() {
-        FakeBookProvider bookProvider = new FakeBookProvider();
-        bookService = new BookProviderAdapter(bookProvider);
+        FakeBookProviderClient bookProvider = new FakeBookProviderClient();
+        this.bookProvider = new BookProviderAdapter(bookProvider);
     }
 
     @Test
@@ -40,7 +40,7 @@ class BookProviderAdapterTest {
                         .price(30.00)
                         .build());
 
-        BookBundle actualBundle = bookService.retrieveBooks("coding");
+        BookBundle actualBundle = bookProvider.retrieveBooks("coding");
 
         assertEquals( 2, actualBundle.size());
         assertEquals(expectedBundle, actualBundle);
@@ -48,21 +48,21 @@ class BookProviderAdapterTest {
 
     @Test
     void bundle_with_invalid_isbn_is_rejected() {
-        Executable retrieve = () -> bookService.retrieveBooks("wrong-isbn");
+        Executable retrieve = () -> bookProvider.retrieveBooks("wrong-isbn");
 
         assertThrows(ValidationException.class, retrieve);
     }
 
     @Test
     void bundle_with_isbn_not_referred_by_any_publisher_is_rejected() {
-        Executable retrieve = () -> bookService.retrieveBooks("not-referred-by-any-publisher");
+        Executable retrieve = () -> bookProvider.retrieveBooks("not-referred-by-any-publisher");
 
         assertThrows(ValidationException.class, retrieve);
     }
 
     @Test
     void bundle_with_invalid_price_is_rejected() {
-        Executable retrieve = () -> bookService.retrieveBooks("invalid-price");
+        Executable retrieve = () -> bookProvider.retrieveBooks("invalid-price");
 
         assertThrows(ValidationException.class, retrieve);
     }

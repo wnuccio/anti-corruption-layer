@@ -1,5 +1,5 @@
 package finalexample.domain;
 
-public interface BookService {
+public interface BookProvider {
     BookBundle retrieveBooks(String keyword);
 }
