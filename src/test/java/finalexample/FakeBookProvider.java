@@ -43,9 +43,9 @@ public class FakeBookProvider extends BookProvider {
     }
 
     @Override
-    public BookBundleDto getBookBundle(List<String> keywords) {
+    public BookBundleDto getBookBundle(String keyword) {
         List<BookInfoDto> bookInfoDtos = this.bookInfos.stream()
-                .filter(bookInfo -> bookInfo.getKeywords().stream().anyMatch(keywords::contains))
+                .filter(bookInfo -> bookInfo.getKeywords().stream().anyMatch(keyword::equals))
                 .collect(toList());
 
         List<String> isbns = bookInfoDtos.stream().map(BookInfoDto::getIsbn).collect(toList());

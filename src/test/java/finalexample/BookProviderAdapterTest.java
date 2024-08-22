@@ -9,8 +9,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -42,9 +40,9 @@ class BookProviderAdapterTest {
                         .price(30.00)
                         .build());
 
-        BookBundle actualBundle = bookService.retrieveBooks(List.of("refactoring", "pattern"));
+        BookBundle actualBundle = bookService.retrieveBooks("coding");
 
-        assertEquals(actualBundle.size(), 2);
+        assertEquals( 2, actualBundle.size());
         assertEquals(expectedBundle, actualBundle);
     }
 
