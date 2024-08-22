@@ -14,17 +14,11 @@ public class BookBundle {
         this.books = books;
     }
 
-    public Edition editionOf(Isbn isbn) {
-        Book book = books.stream()
+    public Book find(Isbn isbn) {
+        return books.stream()
                 .filter(b -> b.hasIsbn(isbn))
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException("Book not found"));
-
-        return new Edition(
-                book.title(),
-                book.publisherName(),
-                book.year(),
-                book.price().euros());
     }
 
     @Override
