@@ -21,6 +21,24 @@ public class BookBundle {
                 .orElseThrow(() -> new IllegalArgumentException("Book not found"));
     }
 
+    public Book leastExpensive() {
+        double minPrice = books.stream()
+                .mapToDouble(book -> book.price().euros())
+                .min()
+                .stream()
+                .findFirst()
+                .orElseThrow();
+
+        return books.stream()
+                .filter(book -> book.price().euros() == minPrice)
+                .findFirst()
+                .orElseThrow();
+    }
+
+    public int size() {
+        return books.size();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

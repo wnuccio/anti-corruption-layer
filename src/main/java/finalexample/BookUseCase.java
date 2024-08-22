@@ -16,4 +16,8 @@ public class BookUseCase {
         BookBundle bundle = bookService.retrieveBooks(keyword);
         return bundle.find(isbn);
     }
+
+    public Book findLeastExpensiveBook(String keyword) {
+        return bookService.retrieveBooks(keyword).leastExpensive();
+    }
 }

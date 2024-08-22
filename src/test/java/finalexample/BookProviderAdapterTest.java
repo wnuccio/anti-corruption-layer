@@ -30,20 +30,21 @@ class BookProviderAdapterTest {
                 Book.builder()
                         .title("Refactoring")
                         .isbn("978-1234567876")
-                        .publisher("O'Reilly")
+                        .publisher("Addison-Wesley")
                         .year(2002)
-                        .price(40.00)
+                        .price(10.00)
                         .build(),
                 Book.builder()
                         .title("Design Patterns")
                         .isbn("978-0201633610")
-                        .publisher("Addison-Wesley")
+                        .publisher("Pearson")
                         .year(2000)
                         .price(30.00)
                         .build());
 
         BookBundle actualBundle = bookService.retrieveBooks(List.of("refactoring", "pattern"));
 
+        assertEquals(actualBundle.size(), 2);
         assertEquals(expectedBundle, actualBundle);
     }
 
