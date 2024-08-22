@@ -12,6 +12,11 @@ public class BookUseCase {
         this.bookProvider = bookProvider;
     }
 
+    public int countBooksAbout(String keyword) {
+        BookBundle bundle = bookProvider.retrieveBooks(keyword);
+        return bundle.size();
+    }
+
     public Book findBookByIsbn(Isbn isbn, String keyword) {
         BookBundle bundle = bookProvider.retrieveBooks(keyword);
         return bundle.find(isbn);
