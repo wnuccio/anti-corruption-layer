@@ -28,9 +28,21 @@ class BookUseCaseTest {
                 List.of(PUBLISHER_A, PUBLISHER_B));
         BookUseCase bookUseCase = createBookUseCase(provider);
 
-        int count = bookUseCase.countBooksAbout("software");
+        int countSoftware = bookUseCase.countBooksAbout("software");
 
-        assertEquals(3, count);
+        assertEquals(3, countSoftware);
+    }
+
+    @Test
+    void fail_for_book_not_referred_by_publisher() {
+        FakeBookProviderClient provider = new FakeBookProviderClient(
+                List.of(BOOK_1),
+                List.of(PUBLISHER_B));
+        BookUseCase bookUseCase = createBookUseCase(provider);
+
+        Executable countBooks = () -> bookUseCase.countBooksAbout("software");
+
+        assertThrows(ValidationException.class, countBooks);
     }
 
     @Test
@@ -58,25 +70,13 @@ class BookUseCaseTest {
     }
 
     @Test
-    void fail_for_book_not_referred_by_publisher() {
-        FakeBookProviderClient provider = new FakeBookProviderClient(
-                List.of(BOOK_1),
-                List.of(PUBLISHER_B));
-        BookUseCase bookUseCase = createBookUseCase(provider);
-
-        Executable countBooks = () -> bookUseCase.countBooksAbout("software");
-
-        assertThrows(ValidationException.class, countBooks);
-    }
-
-    @Test
     void find_book_by_isbn() {
         FakeBookProviderClient provider = new FakeBookProviderClient(
                 List.of(BOOK_1, BOOK_3),
                 List.of(PUBLISHER_A, PUBLISHER_B));
         BookUseCase bookUseCase = createBookUseCase(provider);
 
-        Book book = bookUseCase.findBookByIsbn(Isbn.validate("978-0201633603"), "software");
+        Book book = bookUseCase.findBookByIsbn(Isbn.validate("978-1234567803"), "software");
 
         assertEquals(book.title(), "Implementing DDD");
     }
