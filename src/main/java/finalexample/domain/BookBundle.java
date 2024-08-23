@@ -41,7 +41,6 @@ public class BookBundle {
         return books.stream()
                 .filter(book -> book.hasTitle(title))
                 .map(Book::publisherName)
-                .distinct()
                 .collect(toList());
     }
 
