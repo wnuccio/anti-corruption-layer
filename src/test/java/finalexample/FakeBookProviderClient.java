@@ -25,20 +25,25 @@ public class FakeBookProviderClient extends BookProviderClient {
             new PublishedBookDto("Implementing DDD", "978-1234567803", 40.00, 2003);
 
     public static final BookInfoDto BOOK_4 =
-            new BookInfoDto("Wrong Isbn", "Unknown", "xxxxxxxxxxxxx");
+            new BookInfoDto("Design Patterns", "Gof", "978-1234567804");
     public static final PublishedBookDto PUB_BOOK_4 =
+            new PublishedBookDto("Design Pattern", "978-1234567804", 50.00, 2024);
+
+    public static final BookInfoDto BOOK_WRONG_ISBN =
+            new BookInfoDto("Wrong Isbn", "Unknown", "xxxxxxxxxxxxx");
+    public static final PublishedBookDto PUB_BOOK_WRONG_ISBN =
             new PublishedBookDto("Wrong Isbn", "978-1234567804", 30.00, 2000);
 
-    public static final BookInfoDto BOOK_5 =
+    public static final BookInfoDto BOOK_INVALID_PRICE =
             new BookInfoDto("Invalid Price", "Unknown", "978-1234567805");
-    public static final PublishedBookDto PUB_BOOK_5 =
+    public static final PublishedBookDto PUB_BOOK_INVALID_PRICE =
             new PublishedBookDto("Invalid Price", "978-1234567805", -30.00, 2000);
 
     public static final PublisherDto PUBLISHER_A = new PublisherDto("Addison-Wesley", "USA",
             List.of(PUB_BOOK_1, PUB_BOOK_2));
 
     public static final PublisherDto PUBLISHER_B = new PublisherDto("Pearson", "USA",
-            List.of(PUB_BOOK_3, PUB_BOOK_4, PUB_BOOK_5));
+            List.of(PUB_BOOK_3, PUB_BOOK_4, PUB_BOOK_WRONG_ISBN, PUB_BOOK_INVALID_PRICE));
 
     private final List<BookInfoDto> bookInfos;
     private final List<PublisherDto> publishers;

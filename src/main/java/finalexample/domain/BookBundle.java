@@ -3,6 +3,8 @@ package finalexample.domain;
 import java.util.List;
 import java.util.Objects;
 
+import static java.util.stream.Collectors.toList;
+
 public class BookBundle {
     private final List<Book> books;
 
@@ -33,6 +35,14 @@ public class BookBundle {
                 .filter(book -> book.price().euros() == minPrice)
                 .findFirst()
                 .orElseThrow();
+    }
+
+    public List<String> publishersOf(String title) {
+        return books.stream()
+                .filter(book -> book.hasTitle(title))
+                .map(Book::publisherName)
+                .distinct()
+                .collect(toList());
     }
 
     public int size() {

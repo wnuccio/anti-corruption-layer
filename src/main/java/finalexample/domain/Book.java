@@ -41,6 +41,10 @@ public class Book {
         return this.isbn.equals(isbn);
     }
 
+    public boolean hasTitle(String title) {
+        return this.title.equals(title);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

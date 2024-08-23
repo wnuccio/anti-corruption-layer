@@ -5,6 +5,8 @@ import finalexample.domain.BookBundle;
 import finalexample.domain.BookProvider;
 import finalexample.domain.Isbn;
 
+import java.util.List;
+
 public class BookUseCase {
     private final BookProvider bookProvider;
 
@@ -12,18 +14,23 @@ public class BookUseCase {
         this.bookProvider = bookProvider;
     }
 
-    public int countBooksAbout(String keyword) {
-        BookBundle bundle = bookProvider.retrieveBooks(keyword);
+    public int countSoftwareBooks() {
+        BookBundle bundle = bookProvider.retrieveBooks("software");
         return bundle.size();
     }
 
-    public Book findBookByIsbn(Isbn isbn, String keyword) {
-        BookBundle bundle = bookProvider.retrieveBooks(keyword);
+    public Book findBookByIsbn(Isbn isbn) {
+        BookBundle bundle = bookProvider.retrieveBooks("software");
         return bundle.find(isbn);
     }
 
-    public Book findLeastExpensiveBook(String keyword) {
-        BookBundle bundle = bookProvider.retrieveBooks(keyword);
+    public Book findLeastExpensiveBook() {
+        BookBundle bundle = bookProvider.retrieveBooks("software");
         return bundle.leastExpensive();
+    }
+
+    public List<String> findPublihsersOfBook(String title) {
+        BookBundle bundle = bookProvider.retrieveBooks("software");
+        return bundle.publishersOf(title);
     }
 }
