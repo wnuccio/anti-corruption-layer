@@ -15,22 +15,22 @@ public class BookUseCase {
     }
 
     public int countSoftwareBooks() {
-        BookBundle bundle = bookProvider.retrieveBooks("software");
+        BookBundle bundle = bookProvider.retrieveSoftwareBooks();
         return bundle.size();
     }
 
     public Book findBookByIsbn(Isbn isbn) {
-        BookBundle bundle = bookProvider.retrieveBooks("software");
+        BookBundle bundle = bookProvider.retrieveSoftwareBooks();
         return bundle.find(isbn);
     }
 
     public Book findLeastExpensiveBook() {
-        BookBundle bundle = bookProvider.retrieveBooks("software");
+        BookBundle bundle = bookProvider.retrieveSoftwareBooks();
         return bundle.leastExpensive();
     }
 
     public List<String> findPublihsersOfBook(String title) {
-        BookBundle bundle = bookProvider.retrieveBooks("software");
+        BookBundle bundle = bookProvider.retrieveSoftwareBooks();
         return bundle.publishersOf(title);
     }
 }

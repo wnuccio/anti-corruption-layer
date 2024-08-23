@@ -9,24 +9,24 @@ import finalexample.acl.dtos.PublisherDto;
 import java.util.List;
 
 public class FakeBookProviderClient extends BookProviderClient {
-    public static final BookInfoDto BOOK_1 =
+    public static final BookInfoDto REFACTORING =
             new BookInfoDto("Refactoring", "Fowler", "978-1234567801");
-    public static final PublishedBookDto PUB_BOOK_1 =
+    public static final PublishedBookDto PUB_REFACTORING =
             new PublishedBookDto("Refactoring", "978-1234567801", 10.00, 2002);
 
-    public static final BookInfoDto BOOK_2 =
+    public static final BookInfoDto DESIGN_PATTERNS =
             new BookInfoDto("Design Patterns", "Gof", "978-1234567802");
-    public static final PublishedBookDto PUB_BOOK_2 =
+    public static final PublishedBookDto PUB_DESIGN_PATTERNS =
             new PublishedBookDto("Design Pattern", "978-1234567802", 30.00, 2000);
 
-    public static final BookInfoDto BOOK_3 =
+    public static final BookInfoDto IMPLEMENTING_DDD =
             new BookInfoDto("Implementing DDD", "Vernon", "978-1234567803");
-    public static final PublishedBookDto PUB_BOOK_3 =
+    public static final PublishedBookDto PUB_IMPLEMENTING_DDD =
             new PublishedBookDto("Implementing DDD", "978-1234567803", 40.00, 2003);
 
-    public static final BookInfoDto BOOK_4 =
+    public static final BookInfoDto DESIGN_PATTERNS_2 =
             new BookInfoDto("Design Patterns", "Gof", "978-1234567804");
-    public static final PublishedBookDto PUB_BOOK_4 =
+    public static final PublishedBookDto PUB_DESIGN_PATTERNS_2 =
             new PublishedBookDto("Design Pattern", "978-1234567804", 50.00, 2024);
 
     public static final BookInfoDto BOOK_WRONG_ISBN =
@@ -39,11 +39,11 @@ public class FakeBookProviderClient extends BookProviderClient {
     public static final PublishedBookDto PUB_BOOK_INVALID_PRICE =
             new PublishedBookDto("Invalid Price", "978-1234567805", -30.00, 2000);
 
-    public static final PublisherDto PUBLISHER_A = new PublisherDto("Addison-Wesley", "USA",
-            List.of(PUB_BOOK_1, PUB_BOOK_2));
+    public static final PublisherDto ADDISON_WESLEY = new PublisherDto("Addison-Wesley", "USA",
+            List.of(PUB_REFACTORING, PUB_DESIGN_PATTERNS));
 
-    public static final PublisherDto PUBLISHER_B = new PublisherDto("Pearson", "USA",
-            List.of(PUB_BOOK_3, PUB_BOOK_4, PUB_BOOK_WRONG_ISBN, PUB_BOOK_INVALID_PRICE));
+    public static final PublisherDto PEARSON = new PublisherDto("Pearson", "USA",
+            List.of(PUB_IMPLEMENTING_DDD, PUB_DESIGN_PATTERNS_2, PUB_BOOK_WRONG_ISBN, PUB_BOOK_INVALID_PRICE));
 
     private final List<BookInfoDto> bookInfos;
     private final List<PublisherDto> publishers;
@@ -54,7 +54,7 @@ public class FakeBookProviderClient extends BookProviderClient {
     }
 
     @Override
-    public BookBundleDto getBookBundle(String keyword) {
+    public BookBundleDto getBookBundle() {
         return new BookBundleDto(bookInfos, publishers);
     }
 }

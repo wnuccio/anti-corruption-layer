@@ -9,14 +9,14 @@ import org.junit.jupiter.api.function.Executable;
 
 import java.util.List;
 
-import static finalexample.FakeBookProviderClient.BOOK_1;
-import static finalexample.FakeBookProviderClient.BOOK_2;
-import static finalexample.FakeBookProviderClient.BOOK_3;
-import static finalexample.FakeBookProviderClient.BOOK_4;
+import static finalexample.FakeBookProviderClient.ADDISON_WESLEY;
 import static finalexample.FakeBookProviderClient.BOOK_INVALID_PRICE;
 import static finalexample.FakeBookProviderClient.BOOK_WRONG_ISBN;
-import static finalexample.FakeBookProviderClient.PUBLISHER_A;
-import static finalexample.FakeBookProviderClient.PUBLISHER_B;
+import static finalexample.FakeBookProviderClient.DESIGN_PATTERNS;
+import static finalexample.FakeBookProviderClient.DESIGN_PATTERNS_2;
+import static finalexample.FakeBookProviderClient.IMPLEMENTING_DDD;
+import static finalexample.FakeBookProviderClient.PEARSON;
+import static finalexample.FakeBookProviderClient.REFACTORING;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -26,8 +26,8 @@ class BookUseCaseTest {
     @Test
     void count_books() {
         FakeBookProviderClient provider = new FakeBookProviderClient(
-                List.of(BOOK_1, BOOK_2, BOOK_3),
-                List.of(PUBLISHER_A, PUBLISHER_B));
+                List.of(REFACTORING, DESIGN_PATTERNS, IMPLEMENTING_DDD),
+                List.of(ADDISON_WESLEY, PEARSON));
         BookUseCase bookUseCase = createBookUseCase(provider);
 
         int count = bookUseCase.countSoftwareBooks();
@@ -38,8 +38,8 @@ class BookUseCaseTest {
     @Test
     void fail_for_book_not_referred_by_publisher() {
         FakeBookProviderClient provider = new FakeBookProviderClient(
-                List.of(BOOK_1),
-                List.of(PUBLISHER_B));
+                List.of(REFACTORING),
+                List.of(PEARSON));
         BookUseCase bookUseCase = createBookUseCase(provider);
 
         Executable countBooks = bookUseCase::countSoftwareBooks;
@@ -51,7 +51,7 @@ class BookUseCaseTest {
     void fail_for_invalid_isbn() {
         FakeBookProviderClient provider = new FakeBookProviderClient(
                 List.of(BOOK_WRONG_ISBN),
-                List.of(PUBLISHER_B));
+                List.of(PEARSON));
         BookUseCase bookUseCase = createBookUseCase(provider);
 
         Executable countBooks = bookUseCase::countSoftwareBooks;
@@ -63,7 +63,7 @@ class BookUseCaseTest {
     void fail_for_invalid_price() {
         FakeBookProviderClient provider = new FakeBookProviderClient(
                 List.of(BOOK_INVALID_PRICE),
-                List.of(PUBLISHER_B));
+                List.of(PEARSON));
         BookUseCase bookUseCase = createBookUseCase(provider);
 
         Executable countBooks = bookUseCase::countSoftwareBooks;
@@ -74,8 +74,8 @@ class BookUseCaseTest {
     @Test
     void find_book_by_isbn() {
         FakeBookProviderClient provider = new FakeBookProviderClient(
-                List.of(BOOK_1, BOOK_3),
-                List.of(PUBLISHER_A, PUBLISHER_B));
+                List.of(REFACTORING, IMPLEMENTING_DDD),
+                List.of(ADDISON_WESLEY, PEARSON));
         BookUseCase bookUseCase = createBookUseCase(provider);
 
         Book book = bookUseCase.findBookByIsbn(Isbn.validate("978-1234567803"));
@@ -86,8 +86,8 @@ class BookUseCaseTest {
     @Test
     void find_cheapest_book() {
         FakeBookProviderClient provider = new FakeBookProviderClient(
-                List.of(BOOK_1, BOOK_2, BOOK_3),
-                List.of(PUBLISHER_A, PUBLISHER_B));
+                List.of(REFACTORING, DESIGN_PATTERNS, IMPLEMENTING_DDD),
+                List.of(ADDISON_WESLEY, PEARSON));
         BookUseCase bookUseCase = createBookUseCase(provider);
 
         Book book = bookUseCase.findLeastExpensiveBook();
@@ -98,19 +98,19 @@ class BookUseCaseTest {
     @Test
     void find_publishers_of_books() {
         FakeBookProviderClient provider = new FakeBookProviderClient(
-                List.of(BOOK_1, BOOK_2, BOOK_3, BOOK_4),
-                List.of(PUBLISHER_A, PUBLISHER_B));
+                List.of(REFACTORING, IMPLEMENTING_DDD, DESIGN_PATTERNS, DESIGN_PATTERNS_2),
+                List.of(ADDISON_WESLEY, PEARSON));
         BookUseCase bookUseCase = createBookUseCase(provider);
 
         List<String> publishersOfRefactoring = bookUseCase.findPublihsersOfBook("Refactoring");
         List<String> publishersOfDesignPatterns = bookUseCase.findPublihsersOfBook("Design Patterns");
 
+        assertEquals(1, publishersOfRefactoring.size());
+        assertTrue(publishersOfRefactoring.contains("Addison-Wesley"));
+
         assertEquals( 2, publishersOfDesignPatterns.size());
         assertTrue(publishersOfDesignPatterns.contains("Addison-Wesley"));
         assertTrue(publishersOfDesignPatterns.contains("Pearson"));
-
-        assertEquals(1, publishersOfRefactoring.size());
-        assertTrue(publishersOfRefactoring.contains("Addison-Wesley"));
     }
 
     private BookUseCase createBookUseCase(FakeBookProviderClient provider) {

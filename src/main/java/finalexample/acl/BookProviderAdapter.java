@@ -13,8 +13,8 @@ public class BookProviderAdapter implements BookProvider {
     }
 
     @Override
-    public BookBundle retrieveBooks(String keyword) {
-        BookBundleDto bundleDto = bookProviderClient.getBookBundle(keyword);
+    public BookBundle retrieveSoftwareBooks() {
+        BookBundleDto bundleDto = bookProviderClient.getBookBundle();
         BookBundleDtoMapper mapper = new BookBundleDtoMapper(bundleDto);
         return mapper.toBundle();
     }
