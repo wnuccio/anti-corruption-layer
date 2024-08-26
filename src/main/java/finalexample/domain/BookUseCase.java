@@ -1,6 +1,7 @@
 package finalexample.domain;
 
 import java.util.List;
+import java.util.Optional;
 
 public class BookUseCase {
     private final BookProvider bookProvider;
@@ -9,17 +10,12 @@ public class BookUseCase {
         this.bookProvider = bookProvider;
     }
 
-    public int countSoftwareBooks() {
-        BookBundle bundle = bookProvider.retrieveSoftwareBooks();
-        return bundle.size();
-    }
-
-    public Book findBookByIsbn(Isbn isbn) {
+    public Optional<Book> findBookByIsbn(Isbn isbn) {
         BookBundle bundle = bookProvider.retrieveSoftwareBooks();
         return bundle.find(isbn);
     }
 
-    public Book findCheapestBook() {
+    public Optional<Book> findCheapestBook() {
         BookBundle bundle = bookProvider.retrieveSoftwareBooks();
         return bundle.cheapestBook();
     }

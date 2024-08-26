@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
 import java.util.List;
+import java.util.Optional;
 
 import static finalexample.FakeBookProviderClient.ADDISON_WESLEY;
 import static finalexample.FakeBookProviderClient.BOOK_INVALID_PRICE;
@@ -26,15 +27,16 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class BookUseCaseTest {
 
     @Test
-    void count_books() {
+    void find_book_by_isbn() {
         FakeBookProviderClient provider = new FakeBookProviderClient(
-                List.of(REFACTORING, DESIGN_PATTERNS, IMPLEMENTING_DDD),
+                List.of(REFACTORING, IMPLEMENTING_DDD),
                 List.of(ADDISON_WESLEY, PEARSON));
         BookUseCase bookUseCase = createBookUseCase(provider);
 
-        int count = bookUseCase.countSoftwareBooks();
+        Optional<Book> book = bookUseCase.findBookByIsbn(Isbn.validate("978-1234567803"));
 
-        assertEquals(3, count);
+        assertTrue(book.isPresent());
+        assertEquals(book.get().title(), "Implementing DDD");
     }
 
     @Test
@@ -44,9 +46,9 @@ class BookUseCaseTest {
                 List.of(PEARSON));
         BookUseCase bookUseCase = createBookUseCase(provider);
 
-        Executable countBooks = bookUseCase::countSoftwareBooks;
+        Executable findBook = () -> bookUseCase.findBookByIsbn(Isbn.validate("978-1234567801"));
 
-        assertThrows(ValidationException.class, countBooks);
+        assertThrows(ValidationException.class, findBook);
     }
 
     @Test
@@ -56,9 +58,9 @@ class BookUseCaseTest {
                 List.of(PEARSON));
         BookUseCase bookUseCase = createBookUseCase(provider);
 
-        Executable countBooks = bookUseCase::countSoftwareBooks;
+        Executable findBook = () -> bookUseCase.findBookByIsbn(Isbn.validate("978-1234567804"));
 
-        assertThrows(ValidationException.class, countBooks);
+        assertThrows(ValidationException.class, findBook);
     }
 
     @Test
@@ -68,21 +70,9 @@ class BookUseCaseTest {
                 List.of(PEARSON));
         BookUseCase bookUseCase = createBookUseCase(provider);
 
-        Executable countBooks = bookUseCase::countSoftwareBooks;
+        Executable findBook = () -> bookUseCase.findBookByIsbn(Isbn.validate("978-1234567805"));
 
-        assertThrows(ValidationException.class, countBooks);
-    }
-
-    @Test
-    void find_book_by_isbn() {
-        FakeBookProviderClient provider = new FakeBookProviderClient(
-                List.of(REFACTORING, IMPLEMENTING_DDD),
-                List.of(ADDISON_WESLEY, PEARSON));
-        BookUseCase bookUseCase = createBookUseCase(provider);
-
-        Book book = bookUseCase.findBookByIsbn(Isbn.validate("978-1234567803"));
-
-        assertEquals(book.title(), "Implementing DDD");
+        assertThrows(ValidationException.class, findBook);
     }
 
     @Test
@@ -92,9 +82,10 @@ class BookUseCaseTest {
                 List.of(ADDISON_WESLEY, PEARSON));
         BookUseCase bookUseCase = createBookUseCase(provider);
 
-        Book book = bookUseCase.findCheapestBook();
+        Optional<Book> book = bookUseCase.findCheapestBook();
 
-        assertEquals(book.title(), "Refactoring");
+        assertTrue(book.isPresent());
+        assertEquals(book.get().title(), "Refactoring");
     }
 
     @Test

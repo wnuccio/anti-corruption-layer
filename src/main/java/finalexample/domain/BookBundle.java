@@ -2,6 +2,7 @@ package finalexample.domain;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 
 import static java.util.stream.Collectors.toList;
 
@@ -16,17 +17,15 @@ public class BookBundle {
         this.books = books;
     }
 
-    public Book find(Isbn isbn) {
+    public Optional<Book> find(Isbn isbn) {
         return books.stream()
                 .filter(b -> b.hasIsbn(isbn))
-                .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException("Book not found"));
+                .findFirst();
     }
 
-    public Book cheapestBook() {
+    public Optional<Book> cheapestBook() {
         return books.stream()
-                .min(Comparator.comparing(Book::price))
-                .orElseThrow();
+                .min(Comparator.comparing(Book::price));
     }
 
     public List<Book> booksLessExpensiveThan(Price price) {
@@ -46,10 +45,6 @@ public class BookBundle {
                 .filter(book -> book.hasTitle(title))
                 .map(Book::publisherName)
                 .collect(toList());
-    }
-
-    public int size() {
-        return books.size();
     }
 
     @Override
