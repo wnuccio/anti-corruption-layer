@@ -4,6 +4,7 @@ import finalexample.domain.Book;
 import finalexample.domain.BookBundle;
 import finalexample.domain.BookProvider;
 import finalexample.domain.Isbn;
+import finalexample.domain.Price;
 
 import java.util.List;
 
@@ -32,5 +33,10 @@ public class BookUseCase {
     public List<String> findPublihsersOfBook(String title) {
         BookBundle bundle = bookProvider.retrieveSoftwareBooks();
         return bundle.publishersOf(title);
+    }
+
+    public List<Book> findBooksWithPriceLowerThan(Price price) {
+        BookBundle bundle = bookProvider.retrieveSoftwareBooks();
+        return bundle.bookWithPriceLowerThan(price);
     }
 }

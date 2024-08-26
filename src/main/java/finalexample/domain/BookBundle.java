@@ -1,7 +1,7 @@
 package finalexample.domain;
 
+import java.util.Comparator;
 import java.util.List;
-import java.util.Objects;
 
 import static java.util.stream.Collectors.toList;
 
@@ -24,17 +24,15 @@ public class BookBundle {
     }
 
     public Book leastExpensive() {
-        double minPrice = books.stream()
-                .mapToDouble(book -> book.price().euros())
-                .min()
-                .stream()
-                .findFirst()
-                .orElseThrow();
-
         return books.stream()
-                .filter(book -> book.price().euros() == minPrice)
-                .findFirst()
+                .min(Comparator.comparing(Book::price))
                 .orElseThrow();
+    }
+
+    public List<Book> bookWithPriceLowerThan(Price price) {
+        return books.stream()
+                .filter(book -> book.price().isLowerThan(price))
+                .collect(toList());
     }
 
     public List<String> publishersOf(String title) {
@@ -46,19 +44,6 @@ public class BookBundle {
 
     public int size() {
         return books.size();
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        BookBundle bundle = (BookBundle) o;
-        return Objects.equals(books, bundle.books);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(books);
     }
 
     @Override

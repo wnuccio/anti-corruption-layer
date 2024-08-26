@@ -1,8 +1,6 @@
 package finalexample.domain;
 
-import java.util.Objects;
-
-public class Price {
+public class Price implements Comparable<Price> {
 
     private final double euros;
 
@@ -16,21 +14,13 @@ public class Price {
         return new Price(euros);
     }
 
-    public double euros() {
-        return this.euros;
+    @Override
+    public int compareTo(Price other) {
+        return Double.compare(euros, other.euros);
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Price price = (Price) o;
-        return Double.compare(euros, price.euros) == 0;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(euros);
+    public boolean isLowerThan(Price price) {
+        return this.euros < price.euros;
     }
 
     @Override

@@ -3,6 +3,7 @@ package finalexample;
 import finalexample.acl.BookProviderAdapter;
 import finalexample.domain.Book;
 import finalexample.domain.Isbn;
+import finalexample.domain.Price;
 import finalexample.domain.ValidationException;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
@@ -93,6 +94,19 @@ class BookUseCaseTest {
         Book book = bookUseCase.findLeastExpensiveBook();
 
         assertEquals(book.title(), "Refactoring");
+    }
+
+    @Test
+    void find_books_with_price_lower_than_x() {
+        FakeBookProviderClient provider = new FakeBookProviderClient(
+                List.of(REFACTORING, DESIGN_PATTERNS, IMPLEMENTING_DDD),
+                List.of(ADDISON_WESLEY, PEARSON));
+        BookUseCase bookUseCase = createBookUseCase(provider);
+
+        List<Book> books = bookUseCase.findBooksWithPriceLowerThan(Price.ofEuros(30.00));
+
+        assertEquals(1, books.size());
+        assertEquals(books.get(0).title(), "Refactoring");
     }
 
     @Test

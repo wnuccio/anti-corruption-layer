@@ -1,7 +1,5 @@
 package finalexample.domain;
 
-import java.util.Objects;
-
 public class Book {
     private final String title;
     private final Isbn isbn;
@@ -43,19 +41,6 @@ public class Book {
 
     public boolean hasTitle(String title) {
         return this.title.equals(title);
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Book that = (Book) o;
-        return year == that.year && Objects.equals(price, that.price) && Objects.equals(title, that.title) && Objects.equals(isbn, that.isbn) && Objects.equals(publisher, that.publisher);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(title, isbn, publisher, year, price);
     }
 
     @Override
