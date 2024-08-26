@@ -25,9 +25,9 @@ public class BookUseCase {
         return bundle.find(isbn);
     }
 
-    public Book findLeastExpensiveBook() {
+    public Book findCheapestBook() {
         BookBundle bundle = bookProvider.retrieveSoftwareBooks();
-        return bundle.leastExpensive();
+        return bundle.cheapestBook();
     }
 
     public List<String> findPublihsersOfBook(String title) {
@@ -35,8 +35,13 @@ public class BookUseCase {
         return bundle.publishersOf(title);
     }
 
-    public List<Book> findBooksWithPriceLowerThan(Price price) {
+    public List<Book> findBooksLessExpensiveThan(Price price) {
         BookBundle bundle = bookProvider.retrieveSoftwareBooks();
-        return bundle.bookWithPriceLowerThan(price);
+        return bundle.booksLessExpensiveThan(price);
+    }
+
+    public List<Book> findRecentlyPublishedBooks(int year) {
+        BookBundle bundle = bookProvider.retrieveSoftwareBooks();
+        return bundle.booksPublishedAfter(year);
     }
 }

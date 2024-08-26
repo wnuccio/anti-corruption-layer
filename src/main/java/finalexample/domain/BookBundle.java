@@ -23,15 +23,21 @@ public class BookBundle {
                 .orElseThrow(() -> new IllegalArgumentException("Book not found"));
     }
 
-    public Book leastExpensive() {
+    public Book cheapestBook() {
         return books.stream()
                 .min(Comparator.comparing(Book::price))
                 .orElseThrow();
     }
 
-    public List<Book> bookWithPriceLowerThan(Price price) {
+    public List<Book> booksLessExpensiveThan(Price price) {
         return books.stream()
                 .filter(book -> book.price().isLowerThan(price))
+                .collect(toList());
+    }
+
+    public List<Book> booksPublishedAfter(int year) {
+        return books.stream()
+                .filter(book -> book.publishedAfter(year))
                 .collect(toList());
     }
 

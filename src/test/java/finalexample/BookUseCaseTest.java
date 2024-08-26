@@ -91,7 +91,7 @@ class BookUseCaseTest {
                 List.of(ADDISON_WESLEY, PEARSON));
         BookUseCase bookUseCase = createBookUseCase(provider);
 
-        Book book = bookUseCase.findLeastExpensiveBook();
+        Book book = bookUseCase.findCheapestBook();
 
         assertEquals(book.title(), "Refactoring");
     }
@@ -103,10 +103,23 @@ class BookUseCaseTest {
                 List.of(ADDISON_WESLEY, PEARSON));
         BookUseCase bookUseCase = createBookUseCase(provider);
 
-        List<Book> books = bookUseCase.findBooksWithPriceLowerThan(Price.ofEuros(30.00));
+        List<Book> books = bookUseCase.findBooksLessExpensiveThan(Price.ofEuros(30.00));
 
         assertEquals(1, books.size());
         assertEquals(books.get(0).title(), "Refactoring");
+    }
+
+    @Test
+    void find_books_published_after_x() {
+        FakeBookProviderClient provider = new FakeBookProviderClient(
+                List.of(REFACTORING, DESIGN_PATTERNS, IMPLEMENTING_DDD),
+                List.of(ADDISON_WESLEY, PEARSON));
+        BookUseCase bookUseCase = createBookUseCase(provider);
+
+        List<Book> books = bookUseCase.findRecentlyPublishedBooks(2002);
+
+        assertEquals(1, books.size());
+        assertEquals(books.get(0).title(), "Implementing DDD");
     }
 
     @Test
