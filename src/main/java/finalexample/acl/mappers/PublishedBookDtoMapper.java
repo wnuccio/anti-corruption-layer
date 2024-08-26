@@ -5,21 +5,25 @@ import finalexample.domain.Isbn;
 import finalexample.domain.Price;
 
 public class PublishedBookDtoMapper {
-    private final PublishedBookDto publishedBookDto;
+    private final String isbn;
+    private final double price;
+    private final int year;
 
     public PublishedBookDtoMapper(PublishedBookDto publishedBookDto) {
-        this.publishedBookDto = publishedBookDto;
+        this.isbn = publishedBookDto.getIsbn();
+        this.price = publishedBookDto.getPrice();
+        this.year = publishedBookDto.getYear();
     }
 
     public boolean hasIsbn(Isbn isbn) {
-        return publishedBookDto.getIsbn().equals(isbn.asString());
-    }
-
-    public int toYear() {
-        return publishedBookDto.getYear();
+        return isbn.hasValue(this.isbn);
     }
 
     public Price toPrice() {
-        return Price.ofEuros(publishedBookDto.getPrice());
+        return Price.ofEuros(price);
+    }
+
+    public int toYear() {
+        return year;
     }
 }

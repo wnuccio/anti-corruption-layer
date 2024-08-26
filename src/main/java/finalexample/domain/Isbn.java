@@ -16,8 +16,8 @@ public class Isbn {
         return new Isbn(isbn);
     }
 
-    public String asString() {
-        return isbn;
+    public boolean hasValue(String isbn) {
+        return this.isbn.equals(isbn);
     }
 
     @Override

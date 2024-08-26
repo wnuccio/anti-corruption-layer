@@ -1,10 +1,4 @@
-package finalexample;
-
-import finalexample.domain.Book;
-import finalexample.domain.BookBundle;
-import finalexample.domain.BookProvider;
-import finalexample.domain.Isbn;
-import finalexample.domain.Price;
+package finalexample.domain;
 
 import java.util.List;
 

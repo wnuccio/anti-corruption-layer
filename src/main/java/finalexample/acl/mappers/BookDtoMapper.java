@@ -4,17 +4,19 @@ import finalexample.acl.dtos.BookDto;
 import finalexample.domain.Isbn;
 
 public class BookDtoMapper {
-    BookDto bookDto;
+    private final String title;
+    private final String isbn;
 
     public BookDtoMapper(BookDto bookDto) {
-        this.bookDto = bookDto;
+        this.title = bookDto.getTitle();
+        this.isbn = bookDto.getIsbn();
     }
 
     public String toTitle() {
-        return bookDto.getTitle();
+        return title;
     }
 
     public Isbn toIsbn() {
-        return Isbn.validate(bookDto.getIsbn());
+        return Isbn.validate(isbn);
     }
 }

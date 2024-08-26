@@ -2,6 +2,7 @@ package finalexample;
 
 import finalexample.acl.BookProviderAdapter;
 import finalexample.domain.Book;
+import finalexample.domain.BookUseCase;
 import finalexample.domain.Isbn;
 import finalexample.domain.Price;
 import finalexample.domain.ValidationException;

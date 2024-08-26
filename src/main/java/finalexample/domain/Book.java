@@ -27,10 +27,6 @@ public class Book {
         return publisher.name();
     }
 
-    public int year() {
-        return year;
-    }
-
     public Price price() {
         return price;
     }
