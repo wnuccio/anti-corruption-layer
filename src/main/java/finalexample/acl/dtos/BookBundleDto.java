@@ -3,16 +3,16 @@ package finalexample.acl.dtos;
 import java.util.List;
 
 public class BookBundleDto {
-    List<BookInfoDto> bookInfo;
+    List<BookDto> books;
     List<PublisherDto> publishers;
 
-    public BookBundleDto(List<BookInfoDto> bookInfo, List<PublisherDto> publishers) {
-        this.bookInfo = bookInfo;
+    public BookBundleDto(List<BookDto> books, List<PublisherDto> publishers) {
+        this.books = books;
         this.publishers = publishers;
     }
 
-    public List<BookInfoDto> getBookInfo() {
-        return bookInfo;
+    public List<BookDto> getBooks() {
+        return books;
     }
 
     public List<PublisherDto> getPublishers() {

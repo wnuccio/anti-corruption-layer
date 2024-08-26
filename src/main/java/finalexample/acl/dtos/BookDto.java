@@ -1,11 +1,11 @@
 package finalexample.acl.dtos;
 
-public class BookInfoDto {
+public class BookDto {
     String title;
     String author;
     String isbn;
 
-    public BookInfoDto(String title, String author, String isbn) {
+    public BookDto(String title, String author, String isbn) {
         this.title = title;
         this.author = author;
         this.isbn = isbn;

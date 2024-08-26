@@ -14,12 +14,12 @@ import java.util.List;
 import static java.util.stream.Collectors.toList;
 
 public class BookBundleDtoMapper {
-    private final List<BookInfoDtoMapper> bookInfoDtoMappers;
+    private final List<BookDtoMapper> bookDtoMappers;
     private final List<PublisherDtoMapper> publisherDtoMappers;
 
     public BookBundleDtoMapper(BookBundleDto bookBundleDto) {
-        this.bookInfoDtoMappers = bookBundleDto.getBookInfo().stream()
-                .map(BookInfoDtoMapper::new)
+        this.bookDtoMappers = bookBundleDto.getBooks().stream()
+                .map(BookDtoMapper::new)
                 .collect(toList());
         this.publisherDtoMappers = bookBundleDto.getPublishers().stream()
                 .map(PublisherDtoMapper::new)
@@ -29,16 +29,16 @@ public class BookBundleDtoMapper {
     public BookBundle toBundle() {
         List<Book> books = new ArrayList<>();
 
-        for (BookInfoDtoMapper bookInfoMapper : bookInfoDtoMappers) {
-            String title = bookInfoMapper.toTitle();
-            Isbn isbn = bookInfoMapper.toIsbn();
+        for (BookDtoMapper bookMapper : bookDtoMappers) {
+            String title = bookMapper.toTitle();
+            Isbn isbn = bookMapper.toIsbn();
 
-            PublisherDtoMapper publisherMapper = publisherOf(publisherDtoMappers, isbn);
+            PublisherDtoMapper publisherMapper = publisherOf(isbn);
             Publisher publisher = publisherMapper.toPublisher();
 
-            PublishedBookDtoMapper publishedBookDtoMapper = publisherMapper.publisherBookInfoMapperOf(isbn);
-            int year = publishedBookDtoMapper.toYear();
-            Price price = publishedBookDtoMapper.toPrice();
+            PublishedBookDtoMapper publishedBookMapper = publisherMapper.publishedBookOf(isbn);
+            int year = publishedBookMapper.toYear();
+            Price price = publishedBookMapper.toPrice();
 
             Book book = new Book(title, isbn, publisher, year, price);
             books.add(book);
@@ -47,8 +47,8 @@ public class BookBundleDtoMapper {
         return new BookBundle(books);
     }
 
-    private PublisherDtoMapper publisherOf(List<PublisherDtoMapper> publishers, Isbn isbn) {
-        return publishers.stream()
+    private PublisherDtoMapper publisherOf(Isbn isbn) {
+        return publisherDtoMappers.stream()
                 .filter(publisherDtoMapper -> publisherDtoMapper.hasIsbn(isbn))
                 .findFirst()
                 .orElseThrow(() -> new ValidationException("No Publisher found for ISBN:" + isbn));
