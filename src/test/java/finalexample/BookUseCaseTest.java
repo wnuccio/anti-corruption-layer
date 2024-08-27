@@ -123,14 +123,14 @@ class BookUseCaseTest {
 
         List<String> publishersOfRefactoring = bookUseCase.findPublihsersOfBook("Refactoring");
         List<String> publishersOfDesignPatterns = bookUseCase.findPublihsersOfBook("Design Patterns");
-        List<String> noPublisher = bookUseCase.findPublihsersOfBook("No such a published book");
-
-        assertEquals(1, publishersOfRefactoring.size());
-        assertTrue(publishersOfRefactoring.contains("Addison-Wesley"));
+        List<String> noPublisher = bookUseCase.findPublihsersOfBook("Unpublished book");
 
         assertEquals( 2, publishersOfDesignPatterns.size());
         assertTrue(publishersOfDesignPatterns.contains("Addison-Wesley"));
         assertTrue(publishersOfDesignPatterns.contains("Pearson"));
+
+        assertEquals(1, publishersOfRefactoring.size());
+        assertTrue(publishersOfRefactoring.contains("Addison-Wesley"));
 
         assertTrue(noPublisher.isEmpty());
     }
