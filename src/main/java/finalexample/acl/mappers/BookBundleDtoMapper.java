@@ -49,7 +49,7 @@ public class BookBundleDtoMapper {
 
     private PublisherDtoMapper publisherOf(Isbn isbn) {
         return publisherDtoMappers.stream()
-                .filter(publisherDtoMapper -> publisherDtoMapper.hasIsbn(isbn))
+                .filter(publisherMapper -> publisherMapper.hasIsbn(isbn))
                 .findFirst()
                 .orElseThrow(() -> new ValidationException("No Publisher found for ISBN:" + isbn));
     }
