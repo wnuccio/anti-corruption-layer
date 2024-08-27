@@ -1,12 +1,12 @@
 package finalexample.acl.dtos;
 
-public class PublishedBookDto {
+public class EditionDto {
     String title;
     String isbn;
     double price;
     int year;
 
-    public PublishedBookDto(String title, String isbn, double price, int year) {
+    public EditionDto(String title, String isbn, double price, int year) {
         this.title = title;
         this.isbn = isbn;
         this.year = year;

@@ -50,7 +50,7 @@ public class BookBundle {
     @Override
     public String toString() {
         return "BookBundle{" +
-                "publishedBooks=" + books +
+                "books=" + books +
                 '}';
     }
 }

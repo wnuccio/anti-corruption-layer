@@ -11,28 +11,28 @@ import static java.util.stream.Collectors.toList;
 
 public class PublisherDtoMapper {
     private final String publisherName;
-    private final List<PublishedBookDtoMapper> publishedBookDtoMappers;
+    private final List<EditionDtoMapper> editionDtoMappers;
 
     public PublisherDtoMapper(PublisherDto publisherDto) {
         this.publisherName = publisherDto.getName();
-        this.publishedBookDtoMappers = publisherDto.getPublishedBooks().stream()
-                .map(PublishedBookDtoMapper::new)
+        this.editionDtoMappers = publisherDto.getEditions().stream()
+                .map(EditionDtoMapper::new)
                 .collect(toList());
     }
 
     public boolean hasIsbn(Isbn isbn) {
-        return publishedBookDtoMappers.stream()
-                .anyMatch(publishedBook -> publishedBook.hasIsbn(isbn));
+        return editionDtoMappers.stream()
+                .anyMatch(edition -> edition.hasIsbn(isbn));
     }
 
     public Publisher toPublisher() {
         return new Publisher(publisherName);
     }
 
-    public PublishedBookDtoMapper publishedBookOf(Isbn isbn) {
-        return publishedBookDtoMappers.stream()
-                .filter(publishedBook -> publishedBook.hasIsbn(isbn))
+    public EditionDtoMapper editionOf(Isbn isbn) {
+        return editionDtoMappers.stream()
+                .filter(edition -> edition.hasIsbn(isbn))
                 .findFirst()
-                .orElseThrow(() -> new ValidationException("Published book not found"));
+                .orElseThrow(() -> new ValidationException("Edition not found"));
     }
 }

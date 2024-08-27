@@ -5,12 +5,12 @@ import java.util.List;
 public class PublisherDto {
     String name;
     String address;
-    List<PublishedBookDto> publishedBooks;
+    List<EditionDto> editions;
 
-    public PublisherDto(String name, String address, List<PublishedBookDto> publishedBooks) {
+    public PublisherDto(String name, String address, List<EditionDto> editions) {
         this.name = name;
         this.address = address;
-        this.publishedBooks = publishedBooks;
+        this.editions = editions;
     }
 
     public String getName() {
@@ -22,7 +22,7 @@ public class PublisherDto {
         return address;
     }
 
-    public List<PublishedBookDto> getPublishedBooks() {
-        return publishedBooks;
+    public List<EditionDto> getEditions() {
+        return editions;
     }
 }

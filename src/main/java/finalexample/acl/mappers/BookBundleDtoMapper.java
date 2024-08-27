@@ -36,9 +36,9 @@ public class BookBundleDtoMapper {
             PublisherDtoMapper publisherMapper = publisherOf(isbn);
             Publisher publisher = publisherMapper.toPublisher();
 
-            PublishedBookDtoMapper publishedBookMapper = publisherMapper.publishedBookOf(isbn);
-            int year = publishedBookMapper.toYear();
-            Price price = publishedBookMapper.toPrice();
+            EditionDtoMapper editionMapper = publisherMapper.editionOf(isbn);
+            int year = editionMapper.toYear();
+            Price price = editionMapper.toPrice();
 
             Book book = new Book(title, isbn, publisher, year, price);
             books.add(book);
