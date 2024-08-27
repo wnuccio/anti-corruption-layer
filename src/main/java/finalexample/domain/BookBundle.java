@@ -9,10 +9,6 @@ import static java.util.stream.Collectors.toList;
 public class BookBundle {
     private final List<Book> books;
 
-    public BookBundle(Book... book) {
-        this.books = List.of(book);
-    }
-
     public BookBundle(List<Book> books) {
         this.books = books;
     }
