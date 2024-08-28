@@ -19,8 +19,8 @@ public class Price implements Comparable<Price> {
         return Double.compare(euros, other.euros);
     }
 
-    public boolean isLowerThan(Price price) {
-        return this.euros < price.euros;
+    public boolean isLowerThan(Price other) {
+        return this.compareTo(other) < 0;
     }
 
     @Override

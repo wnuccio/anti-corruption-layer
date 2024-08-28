@@ -7,16 +7,16 @@ public class Book {
     private final int year;
     private final Price price;
 
-    public Book(String title, Isbn isbn, Publisher publisher, int year, Price price) {
+    public Book(String title,
+                Isbn isbn,
+                Publisher publisher,
+                int year,
+                Price price) {
         this.title = title;
         this.isbn = isbn;
         this.publisher = publisher;
         this.year = year;
         this.price = price;
-    }
-
-    public static BookBuilder builder() {
-        return new BookBuilder();
     }
 
     public String title() {
