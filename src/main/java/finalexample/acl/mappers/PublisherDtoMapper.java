@@ -20,7 +20,7 @@ public class PublisherDtoMapper {
                 .collect(toList());
     }
 
-    public boolean hasIsbn(Isbn isbn) {
+    public boolean hasEdition(Isbn isbn) {
         return editionDtoMappers.stream()
                 .anyMatch(editionMapper -> editionMapper.hasIsbn(isbn));
     }

@@ -8,7 +8,6 @@ import finalexample.domain.Price;
 import finalexample.domain.Publisher;
 import finalexample.domain.ValidationException;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static java.util.stream.Collectors.toList;
@@ -27,29 +26,30 @@ public class BookBundleDtoMapper {
     }
 
     public BookBundle toBundle() {
-        List<Book> books = new ArrayList<>();
-
-        for (BookDtoMapper bookMapper: bookDtoMappers) {
-            String title = bookMapper.toTitle();
-            Isbn isbn = bookMapper.toIsbn();
-
-            PublisherDtoMapper publisherMapper = publisherOf(isbn);
-            Publisher publisher = publisherMapper.toPublisher();
-
-            EditionDtoMapper editionMapper = publisherMapper.editionOf(isbn);
-            int year = editionMapper.toYear();
-            Price price = editionMapper.toPrice();
-
-            Book book = new Book(title, isbn, publisher, year, price);
-            books.add(book);
-        }
+        List<Book> books = bookDtoMappers.stream()
+                .map(this::toBook)
+                .collect(toList());
 
         return new BookBundle(books);
     }
 
+    private Book toBook(BookDtoMapper bookMapper) {
+        String title = bookMapper.toTitle();
+        Isbn isbn = bookMapper.toIsbn();
+
+        PublisherDtoMapper publisherMapper = publisherOf(isbn);
+        Publisher publisher = publisherMapper.toPublisher();
+
+        EditionDtoMapper editionMapper = publisherMapper.editionOf(isbn);
+        int year = editionMapper.toYear();
+        Price price = editionMapper.toPrice();
+
+        return new Book(title, isbn, publisher, year, price);
+    }
+
     private PublisherDtoMapper publisherOf(Isbn isbn) {
         return publisherDtoMappers.stream()
-                .filter(publisherMapper -> publisherMapper.hasIsbn(isbn))
+                .filter(publisherMapper -> publisherMapper.hasEdition(isbn))
                 .findFirst()
                 .orElseThrow(() -> new ValidationException("No Publisher found for ISBN:" + isbn));
     }
