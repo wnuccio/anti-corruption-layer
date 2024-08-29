@@ -29,7 +29,7 @@ public class BookBundleDtoMapper {
     public BookBundle toBundle() {
         List<Book> books = new ArrayList<>();
 
-        for (BookDtoMapper bookMapper : bookDtoMappers) {
+        for (BookDtoMapper bookMapper: bookDtoMappers) {
             String title = bookMapper.toTitle();
             Isbn isbn = bookMapper.toIsbn();
 
