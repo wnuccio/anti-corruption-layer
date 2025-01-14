@@ -1,4 +1,4 @@
-package transformstrings.stringtostrategy;
+package modelconcepts.codetostrategy;
 
 class Comedy implements Genre {
     @Override

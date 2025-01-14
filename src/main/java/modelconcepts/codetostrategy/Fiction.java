@@ -1,4 +1,4 @@
-package transformstrings.stringtostrategy;
+package modelconcepts.codetostrategy;
 
 public class Fiction implements Genre {
     @Override
