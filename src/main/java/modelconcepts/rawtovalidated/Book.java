@@ -4,21 +4,21 @@ import java.util.regex.Pattern;
 
 public class Book {
     String title;
-    ISBN isbn;
+    Isbn isbn;
 }
 
-class ISBN {
+class Isbn {
     String value;
 
-    private ISBN(String value) {
+    private Isbn(String value) {
         this.value = value;
     }
 
-    public static ISBN of(String code) {
+    public static Isbn of(String code) {
         if ( ! isValidIsbn(code)) throw new IllegalArgumentException(
                 "ISBN should have 10-13 digits!");
 
-        return new ISBN(code);
+        return new Isbn(code);
     }
 
     public static boolean isValidIsbn(String code) {
