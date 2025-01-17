@@ -18,7 +18,7 @@ class Book {
 class Price {
     enum Currency { EUR, USD }
 
-    Double value;
+    Double amount;
     Currency currency;
 
     boolean isGreaterThan(Price other) {
