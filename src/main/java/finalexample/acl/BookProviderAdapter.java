@@ -1,6 +1,7 @@
 package finalexample.acl;
 
-import finalexample.acl.dtos.BookBundleDto;
+import finalexample.acl.dtos.BookBundleResponseDto;
+import finalexample.acl.dtos.BookRequestDto;
 import finalexample.acl.mappers.BookBundleDtoMapper;
 import finalexample.domain.BookBundle;
 import finalexample.domain.BookProvider;
@@ -14,8 +15,10 @@ public class BookProviderAdapter implements BookProvider {
 
     @Override
     public BookBundle retrieveSoftwareBooks() {
-        BookBundleDto bundleDto = bookProviderClient.getBookBundle();
-        BookBundleDtoMapper mapper = new BookBundleDtoMapper(bundleDto);
-        return mapper.toBundle();
+        BookRequestDto requestDto = new BookRequestDto("BY_KEYWORD", "software", null);
+        BookBundleResponseDto responseDto = bookProviderClient.getBookBundle(requestDto);
+        BookBundleDtoMapper mapper = new BookBundleDtoMapper(responseDto);
+        BookBundle bookBundle = mapper.toBundle();
+        return bookBundle;
     }
 }

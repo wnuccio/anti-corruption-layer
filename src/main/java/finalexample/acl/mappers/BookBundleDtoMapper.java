@@ -1,6 +1,6 @@
 package finalexample.acl.mappers;
 
-import finalexample.acl.dtos.BookBundleDto;
+import finalexample.acl.dtos.BookBundleResponseDto;
 import finalexample.domain.Book;
 import finalexample.domain.BookBundle;
 import finalexample.domain.Isbn;
@@ -16,11 +16,11 @@ public class BookBundleDtoMapper {
     private final List<BookDtoMapper> bookDtoMappers;
     private final List<PublisherDtoMapper> publisherDtoMappers;
 
-    public BookBundleDtoMapper(BookBundleDto bookBundleDto) {
-        this.bookDtoMappers = bookBundleDto.getBooks().stream()
+    public BookBundleDtoMapper(BookBundleResponseDto bookBundleResponseDto) {
+        this.bookDtoMappers = bookBundleResponseDto.getBooks().stream()
                 .map(BookDtoMapper::new)
                 .collect(toList());
-        this.publisherDtoMappers = bookBundleDto.getPublishers().stream()
+        this.publisherDtoMappers = bookBundleResponseDto.getPublishers().stream()
                 .map(PublisherDtoMapper::new)
                 .collect(toList());
     }
