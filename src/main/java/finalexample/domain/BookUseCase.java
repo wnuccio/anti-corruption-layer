@@ -4,34 +4,34 @@ import java.util.List;
 import java.util.Optional;
 
 public class BookUseCase {
-    private final BookProvider bookProvider;
+    private final BookService bookService;
 
-    public BookUseCase(BookProvider bookProvider) {
-        this.bookProvider = bookProvider;
+    public BookUseCase(BookService bookService) {
+        this.bookService = bookService;
     }
 
     public Optional<Book> findBookByIsbn(Isbn isbn) {
-        BookBundle bundle = bookProvider.retrieveSoftwareBooks();
+        BookBundle bundle = bookService.retrieveSoftwareBooks();
         return bundle.find(isbn);
     }
 
     public Optional<Book> findCheapestBook() {
-        BookBundle bundle = bookProvider.retrieveSoftwareBooks();
+        BookBundle bundle = bookService.retrieveSoftwareBooks();
         return bundle.cheapestBook();
     }
 
     public List<String> findPublihsersOfBook(String title) {
-        BookBundle bundle = bookProvider.retrieveSoftwareBooks();
+        BookBundle bundle = bookService.retrieveSoftwareBooks();
         return bundle.publishersOf(title);
     }
 
     public List<Book> findBooksLessExpensiveThan(Price price) {
-        BookBundle bundle = bookProvider.retrieveSoftwareBooks();
+        BookBundle bundle = bookService.retrieveSoftwareBooks();
         return bundle.booksLessExpensiveThan(price);
     }
 
     public List<Book> findRecentlyPublishedBooks(int year) {
-        BookBundle bundle = bookProvider.retrieveSoftwareBooks();
+        BookBundle bundle = bookService.retrieveSoftwareBooks();
         return bundle.booksPublishedAfter(year);
     }
 }

@@ -4,9 +4,9 @@ import finalexample.acl.dtos.BookBundleResponseDto;
 import finalexample.acl.dtos.BookRequestDto;
 import finalexample.acl.mappers.BookBundleDtoMapper;
 import finalexample.domain.BookBundle;
-import finalexample.domain.BookProvider;
+import finalexample.domain.BookService;
 
-public class BookProviderAdapter implements BookProvider {
+public class BookProviderAdapter implements BookService {
     private final BookProviderClient bookProviderClient;
 
     public BookProviderAdapter(BookProviderClient bookProviderClient) {

@@ -1,5 +1,5 @@
 package finalexample.domain;
 
-public interface BookProvider {
+public interface BookService {
     BookBundle retrieveSoftwareBooks();
 }
