@@ -35,7 +35,7 @@ public class Book {
         return this.isbn.equals(isbn);
     }
 
-    public boolean publishedAfter(int year) {
+    public boolean isPublishedAfter(int year) {
         return this.year > year;
     }
 
