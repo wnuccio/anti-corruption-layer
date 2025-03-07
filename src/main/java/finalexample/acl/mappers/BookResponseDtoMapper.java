@@ -1,6 +1,6 @@
 package finalexample.acl.mappers;
 
-import finalexample.acl.dtos.BookBundleResponseDto;
+import finalexample.acl.dtos.BookResponseDto;
 import finalexample.domain.Book;
 import finalexample.domain.BookBundle;
 import finalexample.domain.Isbn;
@@ -12,15 +12,15 @@ import java.util.List;
 
 import static java.util.stream.Collectors.toList;
 
-public class BookBundleDtoMapper {
+public class BookResponseDtoMapper {
     private final List<BookDtoMapper> bookDtoMappers;
     private final List<PublisherDtoMapper> publisherDtoMappers;
 
-    public BookBundleDtoMapper(BookBundleResponseDto bookBundleResponseDto) {
-        this.bookDtoMappers = bookBundleResponseDto.getBooks().stream()
+    public BookResponseDtoMapper(BookResponseDto bookResponseDto) {
+        this.bookDtoMappers = bookResponseDto.getBooks().stream()
                 .map(BookDtoMapper::new)
                 .collect(toList());
-        this.publisherDtoMappers = bookBundleResponseDto.getPublishers().stream()
+        this.publisherDtoMappers = bookResponseDto.getPublishers().stream()
                 .map(PublisherDtoMapper::new)
                 .collect(toList());
     }

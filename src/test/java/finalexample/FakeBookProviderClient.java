@@ -1,9 +1,9 @@
 package finalexample;
 
 import finalexample.acl.BookProviderClient;
-import finalexample.acl.dtos.BookBundleResponseDto;
 import finalexample.acl.dtos.BookDto;
 import finalexample.acl.dtos.BookRequestDto;
+import finalexample.acl.dtos.BookResponseDto;
 import finalexample.acl.dtos.EditionDto;
 import finalexample.acl.dtos.PublisherDto;
 
@@ -55,7 +55,7 @@ public class FakeBookProviderClient extends BookProviderClient {
     }
 
     @Override
-    public BookBundleResponseDto getBookBundle(BookRequestDto requestDto) {
-        return new BookBundleResponseDto(books, publishers);
+    public BookResponseDto getBookBundle(BookRequestDto requestDto) {
+        return new BookResponseDto(books, publishers);
     }
 }
