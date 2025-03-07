@@ -6,6 +6,7 @@ import finalexample.domain.BookUseCase;
 import finalexample.domain.Isbn;
 import finalexample.domain.Price;
 import finalexample.domain.ValidationException;
+import finalexample.domain.Year;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
@@ -108,7 +109,7 @@ class BookUseCaseTest {
                 List.of(ADDISON_WESLEY, PEARSON));
         BookUseCase bookUseCase = createBookUseCase(provider);
 
-        List<Book> books = bookUseCase.findRecentlyPublishedBooks(2002);
+        List<Book> books = bookUseCase.findRecentlyPublishedBooks(new Year(2002));
 
         assertEquals(1, books.size());
         assertEquals(books.get(0).title(), "Implementing DDD");

@@ -7,6 +7,7 @@ import finalexample.domain.Isbn;
 import finalexample.domain.Price;
 import finalexample.domain.Publisher;
 import finalexample.domain.ValidationException;
+import finalexample.domain.Year;
 
 import java.util.List;
 
@@ -41,7 +42,7 @@ public class BookResponseDtoMapper {
         Publisher publisher = publisherMapper.toPublisher();
 
         EditionDtoMapper editionMapper = publisherMapper.editionOf(isbn);
-        int year = editionMapper.toYear();
+        Year year = editionMapper.toYear();
         Price price = editionMapper.toPrice();
 
         return new Book(title, isbn, publisher, year, price);

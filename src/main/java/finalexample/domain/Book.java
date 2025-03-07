@@ -4,13 +4,13 @@ public class Book {
     private final String title;
     private final Isbn isbn;
     private final Publisher publisher;
-    private final int year;
+    private final Year year;
     private final Price price;
 
     public Book(String title,
                 Isbn isbn,
                 Publisher publisher,
-                int year,
+                Year year,
                 Price price) {
         this.title = title;
         this.isbn = isbn;
@@ -35,8 +35,8 @@ public class Book {
         return this.isbn.equals(isbn);
     }
 
-    public boolean isPublishedAfter(int year) {
-        return this.year > year;
+    public boolean isPublishedAfter(Year year) {
+        return this.year.val() > year.val();
     }
 
     public boolean hasTitle(String title) {

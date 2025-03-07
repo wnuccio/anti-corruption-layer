@@ -30,7 +30,7 @@ public class BookUseCase {
         return bundle.booksLessExpensiveThan(price);
     }
 
-    public List<Book> findRecentlyPublishedBooks(int year) {
+    public List<Book> findRecentlyPublishedBooks(Year year) {
         BookBundle bundle = bookService.retrieveSoftwareBooks();
         return bundle.booksPublishedAfter(year);
     }

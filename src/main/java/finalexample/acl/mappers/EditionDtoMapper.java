@@ -3,6 +3,7 @@ package finalexample.acl.mappers;
 import finalexample.acl.dtos.EditionDto;
 import finalexample.domain.Isbn;
 import finalexample.domain.Price;
+import finalexample.domain.Year;
 
 public class EditionDtoMapper {
     private final String isbn;
@@ -23,7 +24,7 @@ public class EditionDtoMapper {
         return Price.ofEuros(price);
     }
 
-    public int toYear() {
-        return year;
+    public Year toYear() {
+        return new Year(year);
     }
 }

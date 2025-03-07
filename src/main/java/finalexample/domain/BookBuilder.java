@@ -33,6 +33,6 @@ public class BookBuilder {
     }
 
     public Book build() {
-        return new Book(title, Isbn.validate(isbn), new Publisher(publisher), year, Price.ofEuros(price));
+        return new Book(title, Isbn.validate(isbn), new Publisher(publisher), new Year(year), Price.ofEuros(price));
     }
 }

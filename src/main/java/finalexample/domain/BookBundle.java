@@ -30,7 +30,7 @@ public class BookBundle {
                 .collect(toList());
     }
 
-    public List<Book> booksPublishedAfter(int year) {
+    public List<Book> booksPublishedAfter(Year year) {
         return books.stream()
                 .filter(book -> book.isPublishedAfter(year))
                 .collect(toList());
