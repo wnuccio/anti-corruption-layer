@@ -6,6 +6,8 @@ import finalexample.acl.mappers.BookResponseDtoMapper;
 import finalexample.domain.BookBundle;
 import finalexample.domain.BookService;
 
+import java.util.List;
+
 public class BookProviderAdapter implements BookService {
     private final BookProviderClient bookProviderClient;
 
@@ -15,7 +17,7 @@ public class BookProviderAdapter implements BookService {
 
     @Override
     public BookBundle retrieveSoftwareBooks() {
-        BookRequestDto requestDto = new BookRequestDto("BY_KEYWORD", "software", null);
+        BookRequestDto requestDto = new BookRequestDto("BY_KEYWORDS", List.of("software"), null);
         BookResponseDto responseDto = bookProviderClient.getBookBundle(requestDto);
         BookResponseDtoMapper mapper = new BookResponseDtoMapper(responseDto);
         BookBundle bookBundle = mapper.toBundle();
