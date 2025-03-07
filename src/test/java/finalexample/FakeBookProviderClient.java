@@ -55,7 +55,7 @@ public class FakeBookProviderClient extends BookProviderClient {
     }
 
     @Override
-    public BookResponseDto getBookBundle(BookRequestDto requestDto) {
+    public BookResponseDto getBooks(BookRequestDto requestDto) {
         return new BookResponseDto(books, publishers);
     }
 }

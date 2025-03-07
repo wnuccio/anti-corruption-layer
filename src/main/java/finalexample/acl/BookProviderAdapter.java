@@ -18,7 +18,7 @@ public class BookProviderAdapter implements BookService {
     @Override
     public BookBundle retrieveSoftwareBooks() {
         BookRequestDto requestDto = new BookRequestDto("BY_KEYWORDS", List.of("software"), null);
-        BookResponseDto responseDto = bookProviderClient.getBookBundle(requestDto);
+        BookResponseDto responseDto = bookProviderClient.getBooks(requestDto);
         BookResponseDtoMapper mapper = new BookResponseDtoMapper(responseDto);
         BookBundle bookBundle = mapper.toBundle();
         return bookBundle;
