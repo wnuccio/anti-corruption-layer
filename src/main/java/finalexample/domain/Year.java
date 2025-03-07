@@ -1,14 +1,14 @@
 package finalexample.domain;
 
 public class Year {
-    private final int year;
+    private final int number;
 
-    public Year(int year) {
-        if (year < 1900) throw new ValidationException("Forbidden value for year: " + year);
-        this.year = year;
+    public Year(int number) {
+        if (number < 1900) throw new ValidationException("Forbidden number for year: " + number);
+        this.number = number;
     }
 
-    public int val() {
-        return year;
+    public boolean isAfter(Year year) {
+        return this.number > year.number;
     }
 }

@@ -36,7 +36,7 @@ public class Book {
     }
 
     public boolean isPublishedAfter(Year year) {
-        return this.year.val() > year.val();
+        return this.year.isAfter(year);
     }
 
     public boolean hasTitle(String title) {
